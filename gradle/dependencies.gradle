@@ -1,0 +1,41 @@
+apply from: rootProject.file("gradle/repositories.gradle")
+
+
+ext {
+    cucumberVersion = '4.7.2'
+    datatableVersion = '3.0.0'
+    selenideVersion = '5.13.0'
+    assertjCoreVersion = '3.16.1'
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter'
+    annotationProcessor 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+    compile group: 'org.apache.log4j', name: 'com.springsource.org.apache.log4j', version: '1.2.16'
+    compile group: 'io.cucumber', name: 'gherkin', version: '5.1.0'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.25'
+    compile group: 'io.cucumber', name: 'cucumber-core', version: "${cucumberVersion}"
+    compile group: 'io.cucumber', name: 'cucumber-java', version: "${cucumberVersion}"
+    compile group: 'io.cucumber', name: 'cucumber-java8', version: "${cucumberVersion}"
+    compile group: 'io.cucumber', name: 'cucumber-jvm', version: "${cucumberVersion}"
+    compile group: 'io.cucumber', name: 'cucumber-spring', version: "${cucumberVersion}"
+    compile group: 'io.cucumber', name: 'cucumber-junit', version: "${cucumberVersion}"
+    compile group: 'io.cucumber', name: 'datatable', version: "${datatableVersion}"
+    compile group: 'io.cucumber', name: 'datatable-matchers', version: "${datatableVersion}"
+    compile group: 'io.cucumber', name: 'datatable-dependencies', version: "${datatableVersion}"
+    compile group: 'com.codeborne', name: 'selenide', version: "${selenideVersion}"
+    compile group: 'org.assertj', name: 'assertj-core', version: "${assertjCoreVersion}"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.9'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '+'
+    compile group: 'io.vavr', name: 'vavr', version: '0.10.2'
+    compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.13'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.12'
+    compile 'net.sf.jopt-simple:jopt-simple:6.0-alpha-2'
+}
