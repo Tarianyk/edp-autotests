@@ -18,6 +18,11 @@ public class JenkinsDefinitionSteps {
         jenkins.clickCodebaseJenkinsFolder(codebaseJenkinsFolder);
     }
 
+    @And("User opens {string} cd pipeline overview")
+    public void userOpensCdPipelineOverview(final String codebaseJenkinsFolder) {
+        jenkins.openCdPipelineOverview(codebaseJenkinsFolder);
+    }
+
     @And("User sees success status for {string} create release job")
     public void userSeesSuccessStatusForCreateReleaseJob(final String createReleaseJob) {
         jenkins.createReleaseStatusShouldBeSuccess(createReleaseJob);
@@ -28,6 +33,12 @@ public class JenkinsDefinitionSteps {
         jenkins.buildJobStatusShouldBeSuccess(buildJob);
         IBrowserTabProcessing.switchToFirstTab();
     }
+
+    @And("User sees success status for {string} cd pipeline stage")
+    public void userSeesSuccessStatusForCdPipelineStage(final String cdPipelineStage) {
+        jenkins.cdPipelineStageStatusShouldBeSuccess(cdPipelineStage);
+    }
+
 
     @And("User clicks 'Manage Jenkins' button")
     public void userClicksManageJenkinsButton() {
@@ -115,6 +126,11 @@ public class JenkinsDefinitionSteps {
     @And("User enters {string} gitlab host url")
     public void userEntersGitlabHostUrl(final String gitlabHostUrl) {
         jenkins.enterGitlabHostUrl(gitlabHostUrl);
+    }
+
+    @And("User enters {string} github host url")
+    public void userEntersGithubHostUrl(final String githubHostUrl) {
+
     }
 
     @And("User selects {string} gitlab access api token")
@@ -243,8 +259,14 @@ public class JenkinsDefinitionSteps {
         jenkins.enterProvisionerCode(gitlabProvisioner);
     }
 
+    @And("User enters {string} GitHub provisioner code")
+    public void userEntersGitHubProvisionerCode(final String gitHubProvisionerCode) {
+//        String githubProvisioner = testConfig.getEnvironmentConfig().getGithubProvisionerCode();
+        jenkins.enterGitHubProvisionerCode(gitHubProvisionerCode);
+    }
+
     @And("User clicks 'sit' job")
-    public void clicksSitJob() {
+    public void userClicksSitJob() {
         jenkins.clickSitJob();
     }
 
@@ -278,8 +300,13 @@ public class JenkinsDefinitionSteps {
         jenkins.clickProceedButtonInVersionInfoPopup();
     }
 
-    @And("User clicks 'Input requeted' button")
+    @And("User clicks 'Input requested' button")
     public void userClicksInputRequestedButton() {
         jenkins.clickInputRequestedButton();
+    }
+
+    @And("User clicks Proceed' button to promote image")
+    public void userClicksProceedButtonToPromoteImage() {
+        jenkins.clickProceedButtonToPromoteImage();
     }
 }

@@ -885,3 +885,432 @@
 ##      | go-beego             | Create           | Go           | beego           | Go        | default        | openshift-template | epam-jira  | ^\[EPMDEDP-\d{4}\]:.*$ | EPMDEDP-\d{4}     | test2     | /         | PostgreSQL   | postgres:9.6    | 2                | Gi           | gp2               | new           | master     | java8-maven-create-pipe | sit       | sit              | manual          | sit      | allure-test | master          | master            | dk-java8-auto-master |
 ##      | go-operator-sdk      | Create           | Go           | operator-sdk    | Go        | default        | openshift-template | epam-jira  | ^\[EPMDEDP-\d{4}\]:.*$ | EPMDEDP-\d{4}     | test2     | /         | PostgreSQL   | postgres:9.6    | 2                | Gi           | gp2               | new           | master     | java8-maven-create-pipe | sit       | sit              | manual          | sit      | allure-test | master          | master            | dk-java8-auto-master |
 #
+
+
+#Scenario Outline: Check pipelines in Jenkins for added Applications using Create strategy
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder           | createReleaseJob                               | buildJob                                     |
+#| username | password | java8-maven-create-def-vers     | Create-release-java8-maven-create-def-vers     | MASTER-Build-java8-maven-create-def-vers     |
+#| username | password | java11-maven-create-def-vers    | Create-release-java11-maven-create-def-vers    | MASTER-Build-java11-maven-create-def-vers    |
+#| username | password | java8-gradle-create-def-vers    | Create-release-java8-gradle-create-def-vers    | MASTER-Build-java8-gradle-create-def-vers    |
+#| username | password | java11-gradle-create-def-vers   | Create-release-java11-gradle-create-def-vers   | MASTER-Build-java11-gradle-create-def-vers   |
+#| username | password | dotnet-2-1-create-def-vers      | Create-release-dotnet-2-1-create-def-vers      | MASTER-Build-dotnet-2-1-create-def-vers      |
+#| username | password | dotnet-3-1-create-def-vers      | Create-release-dotnet-3-1-create-def-vers      | MASTER-Build-dotnet-3-1-create-def-vers      |
+#| username | password | python-3-8-create-def-vers      | Create-release-python-3-8-create-def-vers      | MASTER-Build-python-3-8-create-def-vers      |
+#| username | password | javascript-create-def-vers      | Create-release-javascript-create-def-vers      | MASTER-Build-javascript-create-def-vers      |
+#| username | password | go-beego-create-def-vers        | Create-release-go-beego-create-def-vers        | MASTER-Build-go-beego-create-def-vers        |
+#| username | password | go-operator-sdk-create-def-vers | Create-release-go-operator-sdk-create-def-vers | MASTER-Build-go-operator-sdk-create-def-vers |
+#
+#
+#Scenario Outline: Delete added Applications using Create strategy
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+##
+#Examples:
+#| username | password | applicationName                 |
+#| username | password | java8-maven-create-def-vers     |
+#| username | password | java11-maven-create-def-vers    |
+#| username | password | java8-gradle-create-def-vers    |
+#| username | password | java11-gradle-create-def-vers   |
+#| username | password | dotnet-2-1-create-def-vers      |
+#| username | password | dotnet-3-1-create-def-vers      |
+#| username | password | python-3-8-create-def-vers      |
+#| username | password | javascript-create-def-vers      |
+#| username | password | go-beego-create-def-vers        |
+#| username | password | go-operator-sdk-create-def-vers |
+#
+#
+#Scenario Outline: Check pipelines in Jenkins for added multimodule Applications using Create strategy
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder             | createReleaseJob                                 | buildJob                                       |
+#| username | password | java8-maven-mult-create-def-vers  | Create-release-java8-maven-mult-create-def-vers  | MASTER-Build-java8-maven-mult-create-def-vers  |
+#| username | password | java11-maven-mult-create-def-vers | Create-release-java11-maven-mult-create-def-vers | MASTER-Build-java11-maven-mult-create-def-vers |
+##
+##
+#
+#Scenario Outline: Delete added multimodule Applications using Create strategy
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName                   |
+#| username | password | java8-maven-mult-create-def-vers  |
+#| username | password | java11-maven-mult-create-def-vers |
+#
+#
+#Scenario Outline: Check pipelines in Jenkins for added Applications using Clone strategy (Gitlab)
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder                 | createReleaseJob                                     | buildJob                                           |
+#| username | password | java8-maven-clone-gitlab-def-vers     | Create-release-java8-maven-clone-gitlab-def-vers     | MASTER-Build-java8-maven-clone-gitlab-def-vers     |
+#| username | password | java8-gradle-clone-gitlab-def-vers    | Create-release-java8-gradle-clone-gitlab-def-vers    | MASTER-Build-java8-gradle-clone-gitlab-def-vers    |
+#| username | password | java11-gradle-clone-gitlab-def-vers   | Create-release-java11-gradle-clone-gitlab-def-vers   | MASTER-Build-java11-gradle-clone-gitlab-def-vers   |
+#| username | password | java11-maven-clone-gitlab-def-vers    | Create-release-java11-maven-clone-gitlab-def-vers    | MASTER-Build-java11-maven-clone-gitlab-def-vers    |
+#| username | password | dotnet-3-1-clone-gitlab-def-vers      | Create-release-dotnet-3-1-clone-gitlab-def-vers      | MASTER-Build-dotnet-3-1-clone-gitlab-def-vers      |
+#| username | password | dotnet-2-1-clone-gitlab-def-vers      | Create-release-dotnet-2-1-clone-gitlab-def-vers      | MASTER-Build-dotnet-2-1-clone-gitlab-def-vers      |
+#| username | password | python-3-8-clone-gitlab-def-vers      | Create-release-python-3-8-clone-gitlab-def-vers      | MASTER-Build-python-3-8-clone-gitlab-def-vers      |
+#| username | password | javascript-clone-gitlab-def-vers      | Create-release-javascript-clone-gitlab-def-vers      | MASTER-Build-javascript-clone-gitlab-def-vers      |
+#| username | password | go-beego-clone-gitlab-def-vers        | Create-release-go-beego-clone-gitlab-def-vers        | MASTER-Build-go-beego-clone-gitlab-def-vers        |
+#| username | password | go-operator-sdk-clone-gitlab-def-vers | Create-release-go-operator-sdk-clone-gitlab-def-vers | MASTER-Build-go-operator-sdk-clone-gitlab-def-vers |
+#
+#
+#
+#Scenario Outline: Delete added Applications using Clone strategy (Gitlab)
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName                       |
+#| username | password | java8-maven-clone-gitlab-def-vers     |
+#| username | password | java11-gradle-clone-gitlab-def-vers   |
+#| username | password | dotnet-3-1-clone-gitlab-def-vers      |
+#| username | password | python-3-8-clone-gitlab-def-vers      |
+#| username | password | javascript-clone-gitlab-def-vers      |
+#| username | password | go-beego-clone-gitlab-def-vers        |
+#| username | password | go-operator-sdk-clone-gitlab-def-vers |
+#| username | password | dotnet-2-1-clone-gitlab-def-vers      |
+#
+#
+#Scenario Outline: Check pipelines in Jenkins for added multimodule Applications using Clone strategy
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder                   | createReleaseJob                                       | buildJob                                             |
+#| username | password | java8-maven-mult-clone-gitlab-def-vers  | Create-release-java8-maven-mult-clone-gitlab-def-vers  | MASTER-Build-java8-maven-mult-clone-gitlab-def-vers  |
+#| username | password | java11-maven-mult-clone-gitlab-def-vers | Create-release-java11-maven-mult-clone-gitlab-def-vers | MASTER-Build-java11-maven-mult-clone-gitlab-def-vers |
+#
+#
+#
+#Scenario Outline: Delete added multimodule Applications using Create strategy
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName                         |
+#| username | password | java8-maven-mult-clone-gitlab-def-vers  |
+#| username | password | java11-maven-mult-clone-gitlab-def-vers |
+#
+#
+#Scenario Outline: Check pipelines in Jenkins for added Applications using Clone strategy (Github)
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder                 | createReleaseJob                                     | buildJob                                           |
+#| username | password | java8-maven-clone-github-def-vers     | Create-release-java8-maven-clone-github-def-vers     | MASTER-Build-java8-maven-clone-github-def-vers     |
+#| username | password | java8-gradle-clone-github-def-vers    | Create-release-java8-gradle-clone-github-def-vers    | MASTER-Build-java8-gradle-clone-github-def-vers    |
+#| username | password | java11-maven-clone-github-def-vers    | Create-release-java11-maven-clone-github-def-vers    | MASTER-Build-java11-maven-clone-github-def-vers    |
+#| username | password | java11-gradle-clone-github-def-vers   | Create-release-java11-gradle-clone-github-def-vers   | MASTER-Build-java11-gradle-clone-github-def-vers   |
+#| username | password | go-beego-clone-github-def-vers        | Create-release-go-beego-clone-github-def-vers        | MASTER-Build-go-beego-clone-github-def-vers        |
+#| username | password | go-operator-sdk-clone-github-def-vers | Create-release-go-operator-sdk-clone-github-def-vers | MASTER-Build-go-operator-sdk-clone-github-def-vers |
+#| username | password | python-3-8-clone-github-def-vers      | Create-release-python-3-8-clone-github-def-vers      | MASTER-Build-python-3-8-clone-github-def-vers      |
+#| username | password | javascript-clone-github-def-vers      | Create-release-javascript-clone-github-def-vers      | MASTER-Build-javascript-clone-github-def-vers      |
+#| username | password | dotnet-3-1-clone-github-def-vers      | Create-release-dotnet-3-1-clone-github-def-vers      | MASTER-Build-dotnet-3-1-clone-github-def-vers      |
+#| username | password | dotnet-2-1-clone-github-def-vers      | Create-release-dotnet-2-1-clone-github-def-vers      | MASTER-Build-dotnet-2-1-clone-github-def-vers      |
+#
+#
+#Scenario Outline: Delete added Applications using Clone strategy (Github)
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName                       |
+#| username | password | java8-maven-clone-github-def-vers     |
+#| username | password | java8-gradle-clone-github-def-vers    |
+#| username | password | java11-maven-clone-github-def-vers    |
+#| username | password | java11-gradle-clone-github-def-vers   |
+#| username | password | go-beego-clone-github-def-vers        |
+#| username | password | go-operator-sdk-clone-github-def-vers |
+#| username | password | python-3-8-clone-github-def-vers      |
+#| username | password | javascript-clone-github-def-vers      |
+#| username | password | dotnet-3-1-clone-github-def-vers      |
+#| username | password | dotnet-2-1-clone-github-def-vers      |
+#
+#
+#Scenario Outline: Check pipelines in Jenkins for added multimodule Applications using Clone strategy (Github)
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder                   | createReleaseJob                                       | buildJob                                             |
+#| username | password | java8-maven-mult-clone-github-def-vers  | Create-release-java8-maven-mult-clone-github-def-vers  | MASTER-Build-java8-maven-mult-clone-github-def-vers  |
+#| username | password | java11-maven-mult-clone-github-def-vers | Create-release-java11-maven-mult-clone-github-def-vers | MASTER-Build-java11-maven-mult-clone-github-def-vers |
+#
+#
+#Scenario Outline: Delete added multimodule Applications using Clone strategy (Github)
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName                         |
+#| username | password | java8-maven-mult-clone-github-def-vers  |
+#| username | password | java11-maven-mult-clone-github-def-vers |
+#
+#
+#Scenario Outline: Check pipelines in Jenkins for added Applications using Import strategy (Gitlab)
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder | createReleaseJob                | buildJob                      |
+#| username | password | java8-gradle          | Create-release-java8-gradle     | MASTER-Build-java8-gradle     |
+#| username | password | java8-maven           | Create-release-java8-maven      | MASTER-Build-java8-maven      |
+#| username | password | java11-gradle         | Create-release-java11-gradle    | MASTER-Build-java11-gradle    |
+#| username | password | java11-maven          | Create-release-java11-maven     | MASTER-Build-java11-maven     |
+#| username | password | dotnet-3-1            | Create-release-dotnet-3-1       | MASTER-Build-dotnet-3-1       |
+#| username | password | dotnet-2-1            | Create-release-dotnet-2-1       | MASTER-Build-dotnet-2-1       |
+#| username | password | python-3-8            | Create-release-python-3-8       | MASTER-Build-python-3-8       |
+#| username | password | javascript-react      | Create-release-javascript-react | MASTER-Build-javascript-react |
+#| username | password | go-beego              | Create-release-go-beego         | MASTER-Build-go-beego         |
+#| username | password | go-operator-sdk       | Create-release-go-operator-sdk  | MASTER-Build-go-operator-sdk  |
+#
+#
+#Scenario Outline: Delete added Applications using Import strategy (Gitlab)
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName  |
+#| username | password | java8-gradle     |
+#| username | password | java8-maven      |
+#| username | password | java11-gradle    |
+#| username | password | java11-maven     |
+#| username | password | dotnet-3-1       |
+#| username | password | dotnet-2-1       |
+#| username | password | python-3-8       |
+#| username | password | javascript-react |
+#| username | password | go-beego         |
+#| username | password | go-operator-sdk  |
+#
+#Scenario Outline: Check pipelines in Jenkins for added multimodule Applications using Import strategy (Gitlab)
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder    | createReleaseJob                        | buildJob                              |
+#| username | password | java8-maven-multimodule  | Create-release-java8-maven-multimodule  | MASTER-Build-java8-maven-multimodule  |
+#| username | password | java11-maven-multimodule | Create-release-java11-maven-multimodule | MASTER-Build-java11-maven-multimodule |
+#
+#
+#Scenario Outline: Delete added multimodule Applications using Import strategy (Gitlab)
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName          |
+#| username | password | java8-maven-multimodule  |
+#| username | password | java11-maven-multimodule |
+#
+#
+#Scenario Outline: Check pipelines in Jenkins for added Applications using Import strategy (Github)
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder    | createReleaseJob                        | buildJob                              |
+#| username | password | java-maven-java8         | Create-release-java-maven-java8         | MASTER-Build-java-maven-java8         |
+#| username | password | java-gradle-java8        | Create-release-java-gradle-java8        | MASTER-Build-java-gradle-java8        |
+#| username | password | java-maven-java11        | Create-release-java-maven-java11        | MASTER-Build-java-maven-java11        |
+#| username | password | java-gradle-java11       | Create-release-java-gradle-java11       | MASTER-Build-java-gradle-java11       |
+#| username | password | python-python-python-3-8 | Create-release-python-python-python-3-8 | MASTER-Build-python-python-python-3-8 |
+#| username | password | javascript-npm-react     | Create-release-javascript-npm-react     | MASTER-Build-javascript-npm-react     |
+#| username | password | dotnet-dotnet-dotnet-3-1 | Create-release-dotnet-dotnet-dotnet-3-1 | MASTER-Build-dotnet-dotnet-dotnet-3-1 |
+#| username | password | dotnet-dotnet-dotnet-2-1 | dotnet-dotnet-dotnet-2-1                | MASTER-Build-dotnet-dotnet-dotnet-2-1 |
+#| username | password | go-go-beego              | Create-release-go-go-beego              | MASTER-Build-go-go-beego              |
+#| username | password | go-go-operator-sdk       | Create-release-go-go-operator-sdk       | MASTER-Build-go-go-operator-sdk       |
+#
+#
+#Scenario Outline: Delete added Applications using Import strategy (Github)
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName          |
+#| username | password | java-maven-java8         |
+#| username | password | java-gradle-java8        |
+#| username | password | java-maven-java11        |
+#| username | password | java-gradle-java11       |
+#| username | password | python-python-python-3-8 |
+#| username | password | javascript-npm-react     |
+#| username | password | dotnet-dotnet-dotnet-3-1 |
+#| username | password | dotnet-dotnet-dotnet-2-1 |
+#| username | password | go-go-beego              |
+#| username | password | go-go-operator-sdk       |
+#
+#Scenario Outline: Check pipelines in Jenkins for added multimodule Applications using Import strategy (Github)
+#Given User opens EDP Admin Console
+#When User enters "<username>" in username field
+#And User enters "<password>" in password field
+#And User clicks 'login' button
+#And User clicks 'Jenkins' link
+#And User clicks "<codebaseJenkinsFolder>" codebase jenkins folder
+#And User sees success status for "<createReleaseJob>" create release job
+#And User sees success status for "<buildJob>" build job
+#Examples:
+#| username | password | codebaseJenkinsFolder         | createReleaseJob                             | buildJob                                   |
+#| username | password | java-maven-java8-multimodule  | Create-release-java-maven-java8-multimodule  | MASTER-Build-java-maven-java8-multimodule  |
+#| username | password | java-maven-java11-multimodule | Create-release-java-maven-java11-multimodule | MASTER-Build-java-maven-java11-multimodule |
+#
+#
+#Scenario Outline: Delete added multimodule Applications using Import strategy (Github)
+##    Given User opens EDP Admin Console
+##    When User enters "<username>" in username field
+##    And User enters "<password>" in password field
+##    And User clicks 'login' button
+##    And User clicks on Application tab
+##    And User clicks 'delete codebase' button
+##    And User enters "<applicationName>" in confirmation name field
+##    And User clicks 'Delete confirmation' button
+#And User sends request to get ac-creator secret
+#And User sends request to get admin-console-client secret
+#And User sends request to get token
+#And User deletes "<applicationName>" codebase by request
+#
+#Examples:
+#| username | password | applicationName               |
+#| username | password | java-maven-java8-multimodule  |
+#| username | password | java-maven-java11-multimodule |

@@ -1,6 +1,7 @@
 package edp.core.config.interfaces;
 
 import edp.core.config.EnvironmentConfig;
+import edp.core.config.SecretsConfig;
 import edp.core.config.TestConfiguration;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -11,6 +12,10 @@ public interface ITestConfigurationSupplier {
 
     static EnvironmentConfig getEnvironment() {
         return TestConfigurationInitialization.getTestConfiguration().getEnvironmentConfig();
+    }
+
+    static SecretsConfig getSecretsConfig() {
+        return TestConfigurationInitialization.getTestConfiguration().getSecretsConfig();
     }
 
 

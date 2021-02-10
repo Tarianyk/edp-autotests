@@ -27,5 +27,7 @@ public interface IContinuousDeliveryPage extends IBasePage {
     void clickAddButton();
 
     void clickServicesSection();
+
+    void cdPipelineNameStatusShouldBeActive(String cdPipelineName);
 }
 

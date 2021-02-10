@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import edp.core.utils.WaitingUtils;
 import edp.pageobject.pages.interfaces.IContinuousDeliveryPage;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ContinuousDeliveryDefinitionSteps {
@@ -75,5 +76,10 @@ public class ContinuousDeliveryDefinitionSteps {
     public void userClicksServicesSection() {
         Selenide.sleep(1_000);
         continuousDeliveryPage.clickServicesSection();
+    }
+
+    @Then("User sees success status for {string} cd pipeline name")
+    public void userSeesSuccessStatusForCdPipelineName(final String cdPipelineName) {
+        continuousDeliveryPage.cdPipelineNameStatusShouldBeActive(cdPipelineName);
     }
 }

@@ -1,6 +1,6 @@
-Feature: Smoke
+Feature: Libraries provisioning with EDP versioning type
 
-  @smoke
+  @AddLibEdpVers @AddLibEdpVersCreate @AddCodebase
   Scenario Outline: Create library using Create strategy
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -23,10 +23,10 @@ Feature: Smoke
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
-    And User clicks on Libraries tab
-    And User clicks 'delete codebase' button
-    And User enters "<applicationName>" in confirmation name field
-    And User clicks 'Delete confirmation' button
+    And User sends request to get ac-creator secret
+    And User sends request to get admin-console-client secret
+    And User sends request to get token
+    And User deletes "<applicationName>" codebase by request
 
     Examples:
       | applicationName                   | codebaseStrategy | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password | startVersion |
@@ -39,7 +39,7 @@ Feature: Smoke
       | dotnet-3-1-lib-create-edp-vers    | Create           | DotNet       | dotnet-3.1      | dotnet    | master     | master            | edp            | username | password | 1.2.3        |
       | python-lib-create-edp-vers        | Create           | Python       | python-3.8      | Python    | master     | master            | edp            | username | password | 1.2.3        |
 
-  @smoke
+  @AddLibEdpVers @AddLibEdpVersClone @AddCodebase
   Scenario Outline: Create library using Clone strategy (Gitlab)
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -66,23 +66,23 @@ Feature: Smoke
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
-    And User clicks on Libraries tab
-    And User clicks 'delete codebase' button
-    And User enters "<applicationName>" in confirmation name field
-    And User clicks 'Delete confirmation' button
+    And User sends request to get ac-creator secret
+    And User sends request to get admin-console-client secret
+    And User sends request to get token
+    And User deletes "<applicationName>" codebase by request
 
     Examples:
-      | applicationName                         | codebaseStrategy | repository            | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password | startVersion |
-      | java8-maven-lib-gitlab-clone-edp-vers   | Clone            | java8-gitlab          | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Maven     | master     | master            | edp            | username | password | 1.2.3        |
-      | java11-gradle-lib-gitlab-clone-edp-vers | Clone            | java11-gitlab         | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Gradle    | master     | master            | edp            | username | password | 1.2.3        |
-      | dotnet-3-1-lib-gitlab-clone-edp-vers    | Clone            | dotnet31-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | DotNet       | dotnet-3.1      | dotnet    | master     | master            | edp            | username | password | 1.2.3        |
-      | python-3-8-lib-gitlab-clone-edp-vers    | Clone            | python38-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | edp            | username | password | 1.2.3        |
-      | javascript-lib-gitlab-clone-edp-vers    | Clone            | javascript-gitlab     | gitlabRepositoryLogin | gitlabRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | edp            | username | password | 1.2.3        |
-      | go-beego--lib-gitlab-clone-edp-vers     | Clone            | go-beego-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | Go           | beego           | Go        | master     | master            | edp            | username | password | 1.2.3        |
-      | go-operator-sdk-gitlab-clone-edp-vers   | Clone            | go-operatorsdk-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Go           | operator-sdk    | Go        | master     | master            | edp            | username | password | 1.2.3        |
-      | dotnet-2-1-clone-gitlab-edp-vers        | Clone            | go-operatorsdk-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Go           | operator-sdk    | Go        | master     | master            | edp            | username | password | 1.2.3        |
+      | applicationName                     | codebaseStrategy | repository          | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password | startVersion |
+      | java8-maven-clone-gitlab-edp-vers   | Clone            | java8-gitlab        | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Maven     | master     | master            | edp            | username | password | 1.2.3        |
+      | java8-gradle-clone-gitlab-edp-vers  | Clone            | java8-gradle-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Gradle    | master     | master            | edp            | username | password | 1.2.3        |
+      | java11-gradle-clone-gitlab-edp-vers | Clone            | java11-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Gradle    | master     | master            | edp            | username | password | 1.2.3        |
+      | java11-maven-clone-gitlab-edp-vers  | Clone            | java11-maven-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Maven     | master     | master            | edp            | username | password | 1.2.3        |
+      | dotnet-3-1-clone-gitlab-edp-vers    | Clone            | dotnet31-gitlab     | gitlabRepositoryLogin | gitlabRepositoryPassword | DotNet       | dotnet-3.1      | dotnet    | master     | master            | edp            | username | password | 1.2.3        |
+      | dotnet-2-1-clone-gitlab-edp-vers    | Clone            | dotnet21-gitlab     | gitlabRepositoryLogin | gitlabRepositoryPassword | DotNet       | dotnet-2.1      | dotnet    | master     | master            | edp            | username | password | 1.2.3        |
+      | python-3-8-clone-gitlab-edp-vers    | Clone            | python38-gitlab     | gitlabRepositoryLogin | gitlabRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | edp            | username | password | 1.2.3        |
+      | javascript-clone-gitlab-edp-vers    | Clone            | javascript-gitlab   | gitlabRepositoryLogin | gitlabRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | edp            | username | password | 1.2.3        |
 
-  @smoke
+  @AddLibEdpVers @AddLibEdpVersClone @AddCodebase
   Scenario Outline: Create library using Clone strategy (Github)
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -109,17 +109,23 @@ Feature: Smoke
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
-    And User clicks on Libraries tab
-    And User clicks 'delete codebase' button
-    And User enters "<applicationName>" in confirmation name field
-    And User clicks 'Delete confirmation' button
-    Examples:
-      | applicationName                   | codebaseStrategy | repository         | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password | startVersion |
-      | java8-maven-clone-github-edp-vers | Clone            | java8-mavem-github | githubRepositoryLogin | githubRepositoryPassword | Java         | java8           | Maven     | master     | master            | edp            | username | password | 1.2.3        |
-      | python-3-8-clone-github-edp-vers  | Clone            | python38-github    | githubRepositoryLogin | githubRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | edp            | username | password | 1.2.3        |
-      | javascript-clone-github-edp-vers  | Clone            | javascript-github  | githubRepositoryLogin | githubRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | edp            | username | password | 1.2.3        |
+    And User sends request to get ac-creator secret
+    And User sends request to get admin-console-client secret
+    And User sends request to get token
+    And User deletes "<applicationName>" codebase by request
 
-  @smoke
+    Examples:
+      | applicationName                     | codebaseStrategy | repository           | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password | startVersion |
+      | java8-maven-clone-github-edp-vers   | Clone            | java8-mavem-github   | githubRepositoryLogin | githubRepositoryPassword | Java         | java8           | Maven     | master     | master            | edp            | username | password | 1.2.3        |
+      | java8-gradle-clone-github-edp-vers  | Clone            | java8-gradle-github  | githubRepositoryLogin | githubRepositoryPassword | Java         | java8           | Gradle    | master     | master            | edp            | username | password | 1.2.3        |
+      | java11-maven-clone-github-edp-vers  | Clone            | java11-mavem-github  | githubRepositoryLogin | githubRepositoryPassword | Java         | java11          | Maven     | master     | master            | edp            | username | password | 1.2.3        |
+      | java11-gradle-clone-github-edp-vers | Clone            | java11-gradle-github | githubRepositoryLogin | githubRepositoryPassword | Java         | java11          | Gradle    | master     | master            | edp            | username | password | 1.2.3        |
+      | python-3-8-clone-github-edp-vers    | Clone            | python38-github      | githubRepositoryLogin | githubRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | edp            | username | password | 1.2.3        |
+      | javascript-clone-github-edp-vers    | Clone            | javascript-github    | githubRepositoryLogin | githubRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | edp            | username | password | 1.2.3        |
+      | dotnet-3-1-clone-github-edp-vers    | Clone            | dotnet31-github      | githubRepositoryLogin | githubRepositoryPassword | DotNet       | dotnet-3.1      | dotnet    | master     | master            | edp            | username | password | 1.2.3        |
+      | dotnet-2-1-clone-github-edp-vers    | Clone            | dotnet21-github      | githubRepositoryLogin | githubRepositoryPassword | DotNet       | dotnet-2.1      | dotnet    | master     | master            | edp            | username | password | 1.2.3        |
+
+  @AddLibEdpVers @AddLibEdpVersImport @AddCodebase
   Scenario Outline: Create library using Import strategy (gitlab)
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -144,22 +150,23 @@ Feature: Smoke
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
-#    And User deletes "<applicationName>" codebase by request
-    And User clicks on Libraries tab
-    And User clicks 'delete codebase' button
-    And User enters "<applicationName>" in confirmation name field
-    And User clicks 'Delete confirmation' button
-    Examples:
-      | applicationName            | codebaseStrategy | gitServer | relativePath          | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | ciPipelineProvisioner | versioningType | username | password | startVersion |
-      | java11-gradle              | Import           | git-epam  | java11-gitlab         | Java         | java11          | Gradle    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
-      | test-springboot-helloworld | Import           | git-epam  | java8-gitlab          | Java         | java8           | Maven     | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
-      | dotnet-dotnet-dotnet-3-1   | Import           | git-epam  | dotnet31-gitlab       | DotNet       | dotnet-3.1      | dotnet    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
-      | python-python-python-3-8   | Import           | git-epam  | python38-gitlab       | Python       | Python-3.8      | Python    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
-      | edp-react-helloworld       | Import           | git-epam  | javascript-gitlab     | JavaScript   | react           | NPM       | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
-      | go-go-beego                | Import           | git-epam  | go-beego-gitlab       | Go           | beego           | Go        | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
-      | go-go-operator-sdk         | Import           | git-epam  | go-operatorsdk-gitlab | Go           | operator-sdk    | Go        | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+    And User sends request to get ac-creator secret
+    And User sends request to get admin-console-client secret
+    And User sends request to get token
+    And User deletes "<applicationName>" codebase by request
 
-  @smoke
+    Examples:
+      | applicationName  | codebaseStrategy | gitServer | relativePath        | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | ciPipelineProvisioner | versioningType | username | password | startVersion |
+      | java8-gradle     | Import           | git-epam  | java8-gradle-gitlab | Java         | java8           | Gradle    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | java8-maven      | Import           | git-epam  | java8-gitlab        | Java         | java8           | Maven     | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | java11-gradle    | Import           | git-epam  | java11-gitlab       | Java         | java11          | Gradle    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | java11-maven     | Import           | git-epam  | java11-maven-gitlab | Java         | java11          | Maven     | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | dotnet-3-1       | Import           | git-epam  | dotnet31-gitlab     | DotNet       | dotnet-3.1      | dotnet    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | dotnet-2-1       | Import           | git-epam  | dotnet21-gitlab     | DotNet       | dotnet-2.1      | dotnet    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | python-3-8       | Import           | git-epam  | python38-gitlab     | Python       | python-3.8      | Python    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | javascript-react | Import           | git-epam  | javascript-gitlab   | JavaScript   | react           | NPM       | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+
+   @AddLibEdpVers @AddLibEdpVersImport @AddCodebase
   Scenario Outline: Create library using Import strategy (github)
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -184,12 +191,19 @@ Feature: Smoke
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
-    And User clicks on Libraries tab
-    And User clicks 'delete codebase' button
-    And User enters "<applicationName>" in confirmation name field
-    And User clicks 'Delete confirmation' button
+    And User sends request to get ac-creator secret
+    And User sends request to get admin-console-client secret
+    And User sends request to get token
+    And User deletes "<applicationName>" codebase by request
+
     Examples:
-      | applicationName           | codebaseStrategy | gitServer | relativePath       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | ciPipelineProvisioner | versioningType | username | password | startVersion |
-      | edp-springboot-helloworld | Import           | github    | java8-mavem-github | Java         | java8           | Maven     | master     | master            | github                | edp            | username | password | 1.2.3        |
-      | python-3-8                | Import           | github    | python38-github    | Python       | Python-3.8      | Python    | master     | master            | github                | edp            | username | password | 1.2.3        |
-      | edp-javascript-project    | Import           | github    | javascript-github  | JavaScript   | react           | NPM       | master     | master            | github                | edp            | username | password | 1.2.3        |
+      | applicationName          | codebaseStrategy | gitServer | relativePath          | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | ciPipelineProvisioner | versioningType | username | password | startVersion |
+      | java-maven-java8         | Import           | github    | java8-mavem-github    | Java         | java8           | Maven     | master     | master            | github                | edp            | username | password | 1.2.3        |
+      | java-gradle-java8        | Import           | github    | java8-gradle-github   | Java         | java8           | Gradle    | master     | master            | github                | edp            | username | password | 1.2.3        |
+      | java-maven-java11        | Import           | github    | java11-mavem-github   | Java         | java11          | Maven     | master     | master            | github                | edp            | username | password | 1.2.3        |
+      | java-gradle-java11       | Import           | github    | java11-gradle-github  | Java         | java11          | Gradle    | master     | master            | github                | edp            | username | password | 1.2.3        |
+      | python-python-python-3-8 | Import           | github    | python38-github       | Python       | python-3.8      | Python    | master     | master            | github                | edp            | username | password | 1.2.3        |
+      | javascript-npm-react     | Import           | github    | javascript-github     | JavaScript   | react           | NPM       | master     | master            | github                | edp            | username | password | 1.2.3        |
+      | dotnet-dotnet-dotnet-3-1 | Import           | github    | dotnet31-github       | DotNet       | dotnet-3.1      | dotnet    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+      | dotnet-dotnet-dotnet-2-1 | Import           | github    | dotnet21-github       | DotNet       | dotnet-2.1      | dotnet    | master     | master            | gitlab                | edp            | username | password | 1.2.3        |
+

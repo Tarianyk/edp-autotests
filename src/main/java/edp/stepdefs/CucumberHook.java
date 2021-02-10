@@ -1,6 +1,8 @@
 package edp.stepdefs;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
@@ -27,6 +29,14 @@ public class CucumberHook extends AbstractJUnit4SpringContextTests {
     public void preSetUp() {
         initializeTestCache(testConfiguration);
         Configuration.timeout=30_000;
+        Configuration.fastSetValue = true;
+        Configuration.screenshots = false;
+        Configuration.savePageSource = false;
+        Configuration.pageLoadStrategy = "eager";
+        SelenideLogger.addListener("AllureSelenide",
+                new AllureSelenide()
+                        .screenshots(true)
+                        .savePageSource(false));
         setDefaultSecureHttpClient();
     }
 

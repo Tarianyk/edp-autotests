@@ -19,21 +19,36 @@ import lombok.Setter;
 public class EnvironmentConfig {
 
     private String adminConsoleUrl;
+    private String keycloakUrl;
+    private String kubernetesUrl;
     private String java8RepoUrlGitlab;
+    private String java8GradleRepoUrlGitlab;
     private String java11RepoUrlGitlab;
+    private String java11MavenRepoUrlGitlab;
     private String dotnet31RepoUrlGitlab;
+    private String dotnet21RepoUrlGitlab;
     private String python38RepoUrlGitlab;
     private String javascriptRepoUrlGitlab;
     private String goBeegoRepoUrlGitlab;
     private String goOperatorSdkUrlGitlab;
-    private String dotnet21RepoUrlGitlab;
+    private String java8MultimoduleGitlab;
+    private String java11MultimoduleGitlab;
     private String GitlabRepositoryLogin;
     private String GitlabRepositoryPassword;
     private String githubRepositoryLogin;
     private String githubRepositoryPassword;
     private String java8MavenRepoUrlGithub;
+    private String java8GradleRepoUrlGithub;
+    private String java11MavenRepoUrlGithub;
+    private String java11GradleRepoUrlGithub;
+    private String java8MultimoduleGithub;
+    private String java11MultimoduleGithub;
+    private String goBeegoRepoUrlGithub;
+    private String goOperatorSdkUrlGithub;
     private String javascriptRepoUrlGithub;
     private String python38RepoUrlGithub;
+    private String dotnet31RepoUrlGithub;
+    private String dotnet21RepoUrlGithub;
     private String username;
     private String password;
     private String firstName;
@@ -44,8 +59,9 @@ public class EnvironmentConfig {
     private String gitlabProvisionerCode;
     private String gitlabSshKeyYaml;
     private String gitlabGitServer;
-    private String  petclinicBeRepoUrlGitlab;
+    private String petclinicBeRepoUrlGitlab;
     private String petclinicFeRepoUrlGitlab;
     private String petclinicAutotestsUrlGitlab;
     private String petclinicDeployUrl;
+
 }

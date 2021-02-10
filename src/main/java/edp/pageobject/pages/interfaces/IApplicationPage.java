@@ -50,4 +50,5 @@ public interface IApplicationPage extends IBasePage {
     void checkMultiModuleProjectCheckbox();
 
 
+
 }

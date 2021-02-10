@@ -39,15 +39,29 @@ public class ApplicationDefinitionSteps {
     public void userEntersGitUrlInGitRepositoryUrlField(final String repository) {
         String url = Match(repository).of(
                 Case($("java8-gitlab"), testConfig.getEnvironmentConfig().getJava8RepoUrlGitlab()),
+                Case($("java8-gradle-gitlab"), testConfig.getEnvironmentConfig().getJava8GradleRepoUrlGitlab()),
                 Case($("java11-gitlab"), testConfig.getEnvironmentConfig().getJava11RepoUrlGitlab()),
+                Case($("java11-maven-gitlab"), testConfig.getEnvironmentConfig().getJava11MavenRepoUrlGitlab()),
                 Case($("dotnet31-gitlab"), testConfig.getEnvironmentConfig().getDotnet31RepoUrlGitlab()),
+                Case($("dotnet21-gitlab"), testConfig.getEnvironmentConfig().getDotnet21RepoUrlGitlab()),
                 Case($("python38-gitlab"), testConfig.getEnvironmentConfig().getPython38RepoUrlGitlab()),
                 Case($("javascript-gitlab"), testConfig.getEnvironmentConfig().getJavascriptRepoUrlGitlab()),
                 Case($("go-beego-gitlab"), testConfig.getEnvironmentConfig().getGoBeegoRepoUrlGitlab()),
                 Case($("go-operatorsdk-gitlab"), testConfig.getEnvironmentConfig().getGoOperatorSdkUrlGitlab()),
+                Case($("java8-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava8MultimoduleGitlab()),
+                Case($("java11-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava11MultimoduleGitlab()),
                 Case($("java8-mavem-github"), testConfig.getEnvironmentConfig().getJava8MavenRepoUrlGithub()),
+                Case($("java8-gradle-github"), testConfig.getEnvironmentConfig().getJava8GradleRepoUrlGithub()),
+                Case($("java11-mavem-github"), testConfig.getEnvironmentConfig().getJava11MavenRepoUrlGithub()),
+                Case($("java11-gradle-github"), testConfig.getEnvironmentConfig().getJava11GradleRepoUrlGithub()),
+                Case($("java8-multimodule-github"), testConfig.getEnvironmentConfig().getJava8MultimoduleGithub()),
+                Case($("java11-multimodule-github"), testConfig.getEnvironmentConfig().getJava11MultimoduleGithub()),
+                Case($("go-beego-github"), testConfig.getEnvironmentConfig().getGoBeegoRepoUrlGithub()),
+                Case($("go-operatorsdk-github"), testConfig.getEnvironmentConfig().getGoOperatorSdkUrlGithub()),
                 Case($("javascript-github"), testConfig.getEnvironmentConfig().getJavascriptRepoUrlGithub()),
                 Case($("python38-github"), testConfig.getEnvironmentConfig().getPython38RepoUrlGithub()),
+                Case($("dotnet31-github"), testConfig.getEnvironmentConfig().getDotnet31RepoUrlGithub()),
+                Case($("dotnet21-github"), testConfig.getEnvironmentConfig().getDotnet21RepoUrlGithub()),
                 Case($("petclinicBe-gitlab"), testConfig.getEnvironmentConfig().getPetclinicBeRepoUrlGitlab()),
                 Case($("petclinicFe-gitlab"), testConfig.getEnvironmentConfig().getPetclinicFeRepoUrlGitlab()),
                 Case($("petclinic-autotests-gitlab"), testConfig.getEnvironmentConfig().getPetclinicAutotestsUrlGitlab()),
@@ -270,6 +284,11 @@ public class ApplicationDefinitionSteps {
 
     }
 
+    @And("User selects {string} amount of entires")
+    public void userSelectsAmountOfEntires(final String amountOfEntires) {
+        applicationPage.selectAmountOfEntires(amountOfEntires);
+    }
+
     @Then("User sees success status for {string} application name")
     public void userSeesSuccessStatusForApplicationName(final String applicationName) {
         applicationPage.applicationNameStatusShouldBeActive(applicationName);
@@ -298,12 +317,17 @@ public class ApplicationDefinitionSteps {
     public void userEntersRelativePath(final String relativePath) {
         String path = Match(relativePath).of(
                 Case($("java8-gitlab"), testConfig.getEnvironmentConfig().getJava8RepoUrlGitlab()),
+                Case($("java8-gradle-gitlab"), testConfig.getEnvironmentConfig().getJava8GradleRepoUrlGitlab()),
                 Case($("java11-gitlab"), testConfig.getEnvironmentConfig().getJava11RepoUrlGitlab()),
+                Case($("java11-maven-gitlab"), testConfig.getEnvironmentConfig().getJava11MavenRepoUrlGitlab()),
                 Case($("dotnet31-gitlab"), testConfig.getEnvironmentConfig().getDotnet31RepoUrlGitlab()),
+                Case($("dotnet21-gitlab"), testConfig.getEnvironmentConfig().getDotnet21RepoUrlGitlab()),
                 Case($("python38-gitlab"), testConfig.getEnvironmentConfig().getPython38RepoUrlGitlab()),
                 Case($("javascript-gitlab"), testConfig.getEnvironmentConfig().getJavascriptRepoUrlGitlab()),
                 Case($("go-beego-gitlab"), testConfig.getEnvironmentConfig().getGoBeegoRepoUrlGitlab()),
                 Case($("go-operatorsdk-gitlab"), testConfig.getEnvironmentConfig().getGoOperatorSdkUrlGitlab()),
+                Case($("java8-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava8MultimoduleGitlab()),
+                Case($("java11-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava11MultimoduleGitlab()),
                 Case($("petclinic-autotests-gitlab"), testConfig.getEnvironmentConfig().getPetclinicAutotestsUrlGitlab())
 
         );
@@ -318,8 +342,17 @@ public class ApplicationDefinitionSteps {
     public void userEntersGithubRelativePath(final String relativePath) {
         String path = Match(relativePath).of(
                 Case($("java8-mavem-github"), testConfig.getEnvironmentConfig().getJava8MavenRepoUrlGithub()),
+                Case($("java8-gradle-github"), testConfig.getEnvironmentConfig().getJava8GradleRepoUrlGithub()),
+                Case($("java11-mavem-github"), testConfig.getEnvironmentConfig().getJava11MavenRepoUrlGithub()),
+                Case($("java11-gradle-github"), testConfig.getEnvironmentConfig().getJava11GradleRepoUrlGithub()),
                 Case($("javascript-github"), testConfig.getEnvironmentConfig().getJavascriptRepoUrlGithub()),
-                Case($("python38-github"), testConfig.getEnvironmentConfig().getPython38RepoUrlGithub())
+                Case($("python38-github"), testConfig.getEnvironmentConfig().getPython38RepoUrlGithub()),
+                Case($("dotnet31-github"), testConfig.getEnvironmentConfig().getDotnet31RepoUrlGithub()),
+                Case($("dotnet21-github"), testConfig.getEnvironmentConfig().getDotnet21RepoUrlGithub()),
+                Case($("go-beego-github"), testConfig.getEnvironmentConfig().getGoBeegoRepoUrlGithub()),
+                Case($("go-operatorsdk-github"), testConfig.getEnvironmentConfig().getGoOperatorSdkUrlGithub()),
+                Case($("java8-multimodule-github"), testConfig.getEnvironmentConfig().getJava8MultimoduleGithub()),
+                Case($("java11-multimodule-github"), testConfig.getEnvironmentConfig().getJava11MultimoduleGithub())
 
         );
         Pattern pattern1 = Pattern.compile("(?<=github.com)(.*)(?=.git)");

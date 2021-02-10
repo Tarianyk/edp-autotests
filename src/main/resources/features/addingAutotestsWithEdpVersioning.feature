@@ -1,6 +1,6 @@
-Feature: Smoke
+Feature: Autotests provisioning with EDP versioning type
 
-  @Smoke
+  @AddAutotestsEdpVers @AddCodebase
   Scenario Outline: Add autotest using Clone Strategy
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -33,7 +33,7 @@ Feature: Smoke
       | applicationName     | codebaseStrategy | repository                 | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password | autotestDescription | testReportFramework | startVersion |
       | petclinic-autotests | Clone            | petclinic-autotests-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Maven     | master     | master            | edp            | username | password | test                | allure              | 1.2.3        |
 
-  @smoke
+  @AddAutotestsEdpVers @AddCodebase
   Scenario Outline: Create autotest using Import strategy (gitlab)
     Given User opens EDP Admin Console
     When User enters "<username>" in username field

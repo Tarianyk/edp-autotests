@@ -18,7 +18,7 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile group: 'org.apache.log4j', name: 'com.springsource.org.apache.log4j', version: '1.2.16'
     compile group: 'io.cucumber', name: 'gherkin', version: '5.1.0'
-    compile group: 'org.yaml', name: 'snakeyaml', version: '1.25'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.27'
     compile group: 'io.cucumber', name: 'cucumber-core', version: "${cucumberVersion}"
     compile group: 'io.cucumber', name: 'cucumber-java', version: "${cucumberVersion}"
     compile group: 'io.cucumber', name: 'cucumber-java8', version: "${cucumberVersion}"
@@ -38,4 +38,7 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.13'
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.12'
     compile 'net.sf.jopt-simple:jopt-simple:6.0-alpha-2'
+    compile group: 'org.json', name: 'json', version: '20190722'
+    compile group: 'io.qameta.allure', name: 'allure-cucumber4-jvm', version: '+'
+    compile group: 'io.qameta.allure', name: 'allure-selenide', version: '+'
 }

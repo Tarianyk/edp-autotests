@@ -27,6 +27,7 @@ public class CodebaseRestClient implements ICodebaseRestClient {
                 HttpRequest.deleteWithBody(url).addAccept(APPLICATION_JSON.toString())
         .addContentType(APPLICATION_JSON.toString())
         .addBody(body)
+                        .addAccessToken()
         .sendAndGetResponse(200))
                 .onFailure(exception->{
                   log.error(String.format("Failed to execute delete codebase request by following url %s",url));

@@ -2,11 +2,16 @@ package edp.pageobject.pages.impl;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import edp.core.annotations.Page;
 import edp.core.utils.WaitingUtils;
 import edp.pageobject.pages.interfaces.IContinuousDeliveryPage;
+import edp.utils.wait.FlexWait;
+import io.vavr.control.Try;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
+
+import java.util.function.Predicate;
 
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
@@ -30,6 +35,7 @@ public class ContinuousDeliveryPage extends AbstractBasePage implements IContinu
     private static final String ADD_BUTTON = "//button[@class='add-stage btn btn-primary']";
     private static final String SERVICES_SECTION = "//button[text()[normalize-space(.) = 'Services']]";
     private static final String DOCKER_STREAM_DROPDOWN = "//select[@title='Input Docker Streams']";
+    private static final String CD_PIPELINE_STATUS = "//tr[@data-cd-pipeline-name='%s']";
 
 
     @Override
@@ -112,6 +118,23 @@ public class ContinuousDeliveryPage extends AbstractBasePage implements IContinu
         waitForAjaxToComplete();
         Selenide.sleep(1_000);
         $x(CD_PIPELINE_NAME).shouldBe(Condition.visible).sendKeys(cdPipelineName);
+    }
+
+    @Override
+    public void cdPipelineNameStatusShouldBeActive(String cdPipelineName) {
+        waitForPageReadyState();
+        waitForAjaxToComplete();
+        Selenide.refresh();
+//        $x(String.format(APPLICATION_STATUS, appName)).hover().shouldHave(Condition.attribute("data-codebase-status", "active"));
+        Predicate<SelenideElement> checkStatus = status -> {
+            $x(String.format(CD_PIPELINE_STATUS, cdPipelineName)).shouldBe(Condition.visible);
+            Selenide.refresh();
+//            return Try.of(() -> StringUtils.equals($x(String.format(BRANCH_NAME, branchName)).getAttribute("data-branch-status"), "active")).isSuccess();
+            return Try.of(() -> $x(String.format(CD_PIPELINE_STATUS, cdPipelineName)).shouldHave(Condition.attribute("data-cd-pipeline-status", "active"))).isSuccess();
+        };
+        new FlexWait<SelenideElement>(String.format("wait for success status of %s cd pipeline", cdPipelineName))
+                .during(100000).tryTo(checkStatus).every(5000).executeWithoutResult();
+
     }
 }
 

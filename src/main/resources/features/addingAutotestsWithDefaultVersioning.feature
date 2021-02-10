@@ -1,6 +1,6 @@
-Feature: Smoke
+Feature: Autotests provisioning with Default versioning type
 
-  @Smoke
+  @AddAutotestsDefVers @AddCodebase
   Scenario Outline: Add autotests using Clone Strategy
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -28,12 +28,16 @@ Feature: Smoke
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
+    And User sends request to get ac-creator secret
+    And User sends request to get admin-console-client secret
+    And User sends request to get token
+    And User deletes "<applicationName>" codebase by request
     Examples:
       | applicationName                     | codebaseStrategy | repository                 | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password | autotestDescription | testReportFramework |
       | java8-petclinic-autotests-def-vers  | Clone            | petclinic-autotests-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Maven     | master     | master            | default        | username | password | test                | allure              |
       | java11-petclinic-autotests-def-vers | Clone            | petclinic-autotests-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Maven     | master     | master            | default        | username | password | test                | allure              |
 
-  @smoke
+  @AddAutotestsDefVers @AddCodebase
   Scenario Outline: Create autotest using Import strategy (gitlab)
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -59,12 +63,12 @@ Feature: Smoke
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
-    And User clicks on Application tab
-    And User clicks 'delete codebase' button
-    And User enters "<applicationName>" in confirmation name field
-    And User clicks 'Delete confirmation' button
+    And User sends request to get ac-creator secret
+    And User sends request to get admin-console-client secret
+    And User sends request to get token
+    And User deletes "<applicationName>" codebase by request
     Examples:
       | applicationName            | codebaseStrategy | gitServer | relativePath               | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | ciPipelineProvisioner | versioningType | username | password |
       | test-springboot-helloworld | Import           | git-epam  | java8-gitlab               | Java         | java8           | Maven     | master     | master            | gitlab                | default        | username | password |
-#      | test-springboot-helloworld | Import           | git-epam  | petclinic-autotests-gitlab | Java         | java8           | Maven     | master     | master            | gitlab                | default        | username | password |
+      | test-springboot-helloworld | Import           | git-epam  | petclinic-autotests-gitlab | Java         | java8           | Maven     | master     | master            | gitlab                | default        | username | password |
 

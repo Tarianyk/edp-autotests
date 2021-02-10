@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import io.cucumber.core.cli.Main;
+import edp.core.runner.CustomRunner;
 
 @SpringBootApplication
 public class CucumberConsoleApplication implements CommandLineRunner {
@@ -23,13 +23,13 @@ public class CucumberConsoleApplication implements CommandLineRunner {
     };
 
     public static void main(String[] args) {
-        System.setProperty("allure.results.directory", System.getProperty("spring.profiles.active") + "/allure-results");
+        System.setProperty("allure.results.directory", "allure-results/" + System.getProperty("spring.profiles.active"));
         SpringApplication.run(CucumberConsoleApplication.class, args);
     }
 
     @Override
     public void run(String... args) {
-        Main.main(generateCucumberOptions(args));
+        CustomRunner.main(generateCucumberOptions(args));
     }
 
     private String[] generateCucumberOptions(String... args) {

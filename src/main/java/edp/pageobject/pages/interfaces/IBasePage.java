@@ -63,6 +63,8 @@ public interface IBasePage<T extends IBasePage> {
 
     void clickOpenShiftLink();
 
+    void selectAmountOfEntires(String amountOfEntires);
+
 
 }
 

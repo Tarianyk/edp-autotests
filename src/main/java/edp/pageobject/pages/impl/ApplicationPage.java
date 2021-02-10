@@ -160,7 +160,7 @@ public class ApplicationPage extends AbstractBasePage implements IApplicationPag
             return Try.of(() -> $x(String.format(BRANCH_NAME, branchName)).shouldHave(Condition.attribute("data-branch-status", "active"))).isSuccess();
         };
         new FlexWait<SelenideElement>(String.format("wait for success status of %s application branch", branchName))
-                .during(100000).tryTo(checkStatus).every(5000).executeWithoutResult();
+                .during(300000).tryTo(checkStatus).every(5000).executeWithoutResult();
     }
 
     @Override

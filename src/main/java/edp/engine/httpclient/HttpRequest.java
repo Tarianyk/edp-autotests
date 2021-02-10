@@ -1,5 +1,7 @@
 package edp.engine.httpclient;
 
+import edp.core.cache.TestCache;
+import edp.core.enums.testcachemanagement.TestCacheKey;
 import edp.core.exceptions.TAFRuntimeException;
 import edp.engine.httpclient.errorhandler.DefaultErrorHandler;
 import io.vavr.control.Try;
@@ -133,6 +135,12 @@ public class HttpRequest {
     }
     public HttpRequest addBearerTokenAuth(final String accessToken) {
         addHeader("Authorization", format("Bearer %s", accessToken));
+        return this;
+    }
+    public HttpRequest addAccessToken(){
+        if (TestCache.containsKey(TestCacheKey.ACCESS_TOKEN)){
+            return addBearerTokenAuth(TestCache.get(TestCacheKey.ACCESS_TOKEN,String.class));
+        }
         return this;
     }
     private void printLogs() {

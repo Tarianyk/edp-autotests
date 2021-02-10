@@ -61,8 +61,9 @@ public abstract class AbstractBasePage implements IBasePage {
     private static final String VCS_LINK = "//a[contains(@href,'gerrit-oc-green-edp')]";
     private static final String GERRIT_LINK = "//a[contains(@href,'gerrit-oc-green-edp')]";
     private static final String BROWSE_BUTTON = "";
-    private static final String JENKINS_LINK = "//a[contains(@href,'jenkins-oc-green')]";
+    private static final String JENKINS_LINK = "//a[contains(@href,'jenkins-edp-delivery')]";
     private static final String OPENSHIFT_LINK = "//a[contains(@href,'master.delivery.aws')]";
+    private static final String ENTIRES_DROPDOWN = "//select[@name='edp-table_length']";
 
 
     @Override
@@ -84,6 +85,12 @@ public abstract class AbstractBasePage implements IBasePage {
     public void selectJiraServer(String jiraServer) {
         $x(JIRA_SERVER).shouldBe(Condition.visible).selectOptionContainingText(jiraServer);
         $x(JIRA_SERVER).shouldHave(Condition.exactValue(jiraServer));
+    }
+
+    @Override
+    public void selectAmountOfEntires(String amountOfEntires) {
+        $x(ENTIRES_DROPDOWN).shouldBe(Condition.visible).selectOptionContainingText(amountOfEntires);
+        $x(ENTIRES_DROPDOWN).shouldHave(Condition.exactValue(amountOfEntires));
     }
 
     @Override
@@ -126,7 +133,7 @@ public abstract class AbstractBasePage implements IBasePage {
             return Try.of(() -> $x(String.format(APPLICATION_STATUS, appName)).shouldHave(Condition.attribute("data-codebase-status", "active"))).isSuccess();
         };
         new FlexWait<SelenideElement>(String.format("wait for success status of %s codebase", appName))
-                .during(100000).tryTo(checkStatus).every(5000).executeWithoutResult();
+                .during(150000).tryTo(checkStatus).every(5000).executeWithoutResult();
     }
 
     @Override
@@ -200,7 +207,7 @@ public abstract class AbstractBasePage implements IBasePage {
     public void clickCreateButton() {
         waitForPageReadyState();
         waitForAjaxToComplete();
-//        Selenide.sleep(2_000);
+        Selenide.sleep(1_000);
         $$x(CREATE_BUTTON).filter(Condition.visible).first().click();
     }
 

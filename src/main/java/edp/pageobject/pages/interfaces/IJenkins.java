@@ -3,9 +3,13 @@ package edp.pageobject.pages.interfaces;
 public interface IJenkins {
     void clickCodebaseJenkinsFolder(String codebaseJenkinsFolder);
 
+    void openCdPipelineOverview(String codebaseJenkinsFolder);
+
     void createReleaseStatusShouldBeSuccess(String createReleaseJob);
 
     void buildJobStatusShouldBeSuccess(String buildJob);
+
+    void cdPipelineStageStatusShouldBeSuccess(String cdPipelineStage);
 
     void clickManageJenkinsButton();
 
@@ -40,6 +44,8 @@ public interface IJenkins {
     void enterGitlabConnectionName(String gitlabConnectionName);
 
     void enterGitlabHostUrl(String gitlabHostUrl);
+
+    void enterGithubHostUrl(String githubHostUrl);
 
     void selectGitlabAccessApiToken(String gitlabAccessApiToken);
 
@@ -91,6 +97,8 @@ public interface IJenkins {
 
     void enterProvisionerCode(String provisionerCode);
 
+    void enterGitHubProvisionerCode(String gitHubProvisionerCode);
+
     void clickSitJob();
 
     void clickBuildWithParametersButton();
@@ -106,6 +114,8 @@ public interface IJenkins {
     void selectApplicationVersionForDeploy(String applicationVersion);
 
     void clickProceedButtonInVersionInfoPopup();
+
+    void clickProceedButtonToPromoteImage();
 
 
 

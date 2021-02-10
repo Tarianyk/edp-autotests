@@ -20,6 +20,10 @@ public class TestConfiguration {
     private EnvironmentConfig environmentConfig;
 
     @Getter
+    @Autowired
+    private SecretsConfig secretsConfig;
+
+    @Getter
     @Value("${browser.type}")
     private String browserType;
 

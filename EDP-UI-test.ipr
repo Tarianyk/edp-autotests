@@ -14,4 +14,12 @@
     </profile>
     <version value="1.0" />
   </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EDP-UI-test.ipr/.idea/EDP-UI-test.ipr.iml" filepath="$PROJECT_DIR$/EDP-UI-test.ipr/.idea/EDP-UI-test.ipr.iml" />
+    </modules>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
 </project>
