@@ -6,7 +6,6 @@ import edp.pageobject.pages.interfaces.IAutotestsPage;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
-import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 @Lazy

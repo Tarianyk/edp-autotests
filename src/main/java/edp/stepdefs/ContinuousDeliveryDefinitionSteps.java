@@ -1,7 +1,6 @@
 package edp.stepdefs;
 
 import com.codeborne.selenide.Selenide;
-import edp.core.utils.WaitingUtils;
 import edp.pageobject.pages.interfaces.IContinuousDeliveryPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;

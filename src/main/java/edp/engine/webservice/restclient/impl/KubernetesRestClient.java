@@ -11,9 +11,6 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 
-import static edp.engine.httpclient.HttpRequest.ContentType.APPLICATION_JSON;
-import static edp.engine.httpclient.HttpRequest.ContentType.FORM_DATA;
-
 @Lazy
 @RestClient
 @Log4j

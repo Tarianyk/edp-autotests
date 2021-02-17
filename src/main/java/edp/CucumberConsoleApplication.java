@@ -1,5 +1,6 @@
 package edp;
 
+import edp.core.runner.CustomRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import edp.core.runner.CustomRunner;
 
 @SpringBootApplication
 public class CucumberConsoleApplication implements CommandLineRunner {

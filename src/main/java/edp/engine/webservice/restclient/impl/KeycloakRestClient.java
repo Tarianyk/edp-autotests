@@ -1,7 +1,6 @@
 package edp.engine.webservice.restclient.impl;
 
 import edp.core.annotations.RestClient;
-import edp.core.config.EnvironmentConfig;
 import edp.core.config.TestConfiguration;
 import edp.core.exceptions.EnvironmentException;
 import edp.engine.httpclient.HttpRequest;

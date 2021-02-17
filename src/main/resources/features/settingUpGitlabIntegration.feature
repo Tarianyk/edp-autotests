@@ -1,7 +1,7 @@
 Feature: Gitlab_integration
 
 
-  @Gitlab_integration
+  @Gitlab_integration @Integration
   Scenario Outline: Create API token in jenkins for Gitlab integration
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -13,16 +13,16 @@ Feature: Gitlab_integration
     And User clicks 'global' button
     And User clicks 'Add Credentials' button
     And User selects "<credentialsKind>" credentials kind
-    And User enters "<apiToken>" api token
+    And User enters gitlab api token
     And User enters "<tokenId>" token id
     Then User clicks 'ok' button
 
 
     Examples:
-      | username | password | credentialsKind  | apiToken       | tokenId             |
-      | username | password | GitLab API token | gitlabApiToken | gitlab-access-token |
+      | username | password | credentialsKind  | tokenId             |
+      | username | password | GitLab API token | gitlab-access-token |
 
-  @Gitlab_integration
+  @Gitlab_integration @Integration
   Scenario Outline: Create SSH Credential for Gitlab integrations
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -44,7 +44,7 @@ Feature: Gitlab_integration
       | username | password | credentialsKind               | sshKeyId      | privatSshKey |
       | username | password | SSH Username with private key | gitlab-sshkey | privatSshKey |
 
-  @Gitlab_integration
+  @Gitlab_integration @Integration
   Scenario Outline: Configure Gitlab connection
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -61,7 +61,7 @@ Feature: Gitlab_integration
       | username | password | gitlabConnectionName | gitlabHostUrl        | gitlabAccessApiToken |
       | username | password | git.epam.com         | https://git.epam.com | gitlab-access-token  |
 
-  @Gitlab_integration
+  @Gitlab_integration @Integration @Gitlab_integration
   Scenario Outline: Create CI provisioner for Gitlab integration
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -118,8 +118,8 @@ Feature: Gitlab_integration
     And User selects "<buildStep>" build step
     And User clicks 'Use the provided DSL script' checkbox
     And User activate 'DSL script' window
-    And User enters "<provisionerCode>" provisioner code
+    And User enters provisioner code
     Then User clicks 'Save provisioner' button
     Examples:
-      | username | password | provisionerName | branchName | parametersType   | parameterName | parameterName1 | parameterName2 | parameterName3 | parameterName4     | parameterName5        | parameterName6 | parameterName7 | parameterName8 | parameterName9     | parameterName10 | parameterName11          | buildStep        |
-      | username | password | gitlab          | master     | String Parameter | NAME          | TYPE           | BUILD_TOOL     | BRANCH         | GIT_SERVER_CR_NAME | GIT_SERVER_CR_VERSION | GIT_SERVER     | GIT_SSH_PORT   | GIT_USERNAME   | GIT_CREDENTIALS_ID | REPOSITORY_PATH | JIRA_INTEGRATION_ENABLED | Process Job DSLs |
+      | username | password | provisionerName | branchName | parametersType   | parameterName | parameterName1 | parameterName2 | parameterName3 | parameterName4     | parameterName5        | parameterName6 | parameterName7 | parameterName8 | parameterName9     | parameterName10 | parameterName11          | buildStep        | provisionerCode       |
+      | username | password | gitlab          | master     | String Parameter | NAME          | TYPE           | BUILD_TOOL     | BRANCH         | GIT_SERVER_CR_NAME | GIT_SERVER_CR_VERSION | GIT_SERVER     | GIT_SSH_PORT   | GIT_USERNAME   | GIT_CREDENTIALS_ID | REPOSITORY_PATH | JIRA_INTEGRATION_ENABLED | Process Job DSLs | gitlabProvisionerCode |

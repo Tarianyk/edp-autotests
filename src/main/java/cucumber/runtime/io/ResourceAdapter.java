@@ -1,12 +1,12 @@
 package cucumber.runtime.io;
 
 
+import edp.core.exceptions.TAFRuntimeException;
+import io.vavr.control.Try;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-
-import edp.core.exceptions.TAFRuntimeException;
-import io.vavr.control.Try;
 
 public class ResourceAdapter implements Resource {
 

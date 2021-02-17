@@ -1,7 +1,6 @@
 package edp.pageobject.pages.impl;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import edp.core.annotations.CurrentUrl;
 import edp.core.annotations.Page;
 import edp.pageobject.pages.interfaces.IAdminConsolePage;

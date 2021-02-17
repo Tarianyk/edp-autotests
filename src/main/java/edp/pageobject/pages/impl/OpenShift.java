@@ -1,7 +1,6 @@
 package edp.pageobject.pages.impl;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import edp.core.annotations.Page;
 import edp.pageobject.pages.interfaces.IOpenShift;

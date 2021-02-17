@@ -7,6 +7,8 @@ public interface IJenkins {
 
     void createReleaseStatusShouldBeSuccess(String createReleaseJob);
 
+    void pluginInstallationStatusShouldBeActive(String pluginName);
+
     void buildJobStatusShouldBeSuccess(String buildJob);
 
     void cdPipelineStageStatusShouldBeSuccess(String cdPipelineStage);
@@ -41,6 +43,16 @@ public interface IJenkins {
 
     void clickConfigureSystemButton();
 
+    void clickManagePluginsButton();
+
+    void clickAvailableButton();
+
+    void enterPluginNameInSearchField(String pluginName);
+
+    void clickInstallWithoutRestartButton();
+
+    void checkGitHubPullRequestBuilderCheckbox();
+
     void enterGitlabConnectionName(String gitlabConnectionName);
 
     void enterGitlabHostUrl(String gitlabHostUrl);
@@ -58,6 +70,8 @@ public interface IJenkins {
     void enterGithubConnectionName(String githubConnectionName);
 
     void selectGithubAccessApiToken(String githubAccessToken);
+
+    void selectsTokenForPullRequestBuilder(String githubAccessApiToken);
 
     void openJobProvisionsFolder();
 

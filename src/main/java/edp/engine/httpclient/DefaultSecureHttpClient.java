@@ -24,7 +24,6 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.ssl.TrustStrategy;
 
-
 import javax.net.ssl.SSLContext;
 import java.util.List;
 import java.util.Objects;

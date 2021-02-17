@@ -5,16 +5,15 @@ import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
 import org.springframework.core.io.support.PropertySourceFactory;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
-import org.springframework.util.StringUtils;
 
 public class YamlPropertySourceFactory implements PropertySourceFactory {
 

@@ -1,6 +1,5 @@
 package edp.engine.httpclient;
 
-import edp.engine.httpclient.DefaultSecureHttpClient;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

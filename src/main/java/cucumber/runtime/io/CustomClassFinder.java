@@ -1,12 +1,12 @@
 package cucumber.runtime.io;
 
+import cucumber.runtime.ClassFinder;
+import lombok.extern.log4j.Log4j;
+
 import java.net.URI;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.stream.Collectors;
-
-import cucumber.runtime.ClassFinder;
-import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class CustomClassFinder implements ClassFinder {

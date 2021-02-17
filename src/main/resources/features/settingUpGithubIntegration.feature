@@ -1,6 +1,6 @@
 Feature: Github_integration
 
-  @Github_integration
+  @Github_integration @Integration
   Scenario Outline: Create API token in jenkins for Github integration
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -12,15 +12,15 @@ Feature: Github_integration
     And User clicks 'global' button
     And User clicks 'Add Credentials' button
     And User selects "<credentialsKind>" credentials kind
-    And User enters "<secret>" secret token
+    And User enters secret token
     And User enters "<secretId>" secret id
     Then User clicks 'ok' button
 
     Examples:
-      | username | password | credentialsKind | secret            | secretId            |
-      | username | password | Secret text     | githubSecretToken | github-access-token |
+      | username | password | credentialsKind | secretId            |
+      | username | password | Secret text     | github-access-token |
 
-  @Github_integration
+  @Github_integration @Integration
   Scenario Outline: Create SSH Credential for Github integrations
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -42,7 +42,25 @@ Feature: Github_integration
       | username | password | credentialsKind               | sshKeyId      | privatSshKey |
       | username | password | SSH Username with private key | github-sshkey | privatSshKey |
 
-  @Github_integration
+  @Github_integration @Integration
+  Scenario Outline: Install Github Pull  Request Builder
+    Given User opens EDP Admin Console
+    When User enters "<username>" in username field
+    And User enters "<password>" in password field
+    And User clicks 'login' button
+    And User clicks 'Jenkins' link
+    And User clicks 'Manage Jenkins' button
+    And User clicks 'Manage Plugins' button
+    And User clicks 'Available' button
+    And User enters "<pluginName>" plugin name in search field
+    And User Checks 'GitHub Pull Request Builder' checkbox
+    And User clicks 'Install without restart' button
+#    And User sees success status for "<pluginName>" plugin installation
+    Examples:
+      | username | password | pluginName                  |
+      | username | password | GitHub Pull Request Builder |
+
+  @Github_integration @Integration
   Scenario Outline: Configure Github connection
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -53,16 +71,17 @@ Feature: Github_integration
     And User clicks 'Configure System' button
     And User clicks 'Add Github server' button
     And User clicks 'github Server' button
-    And User enters "<githubConnectionName>" github connection name
-    And User enters "<githubHostUrl>" github host url
+    Then User enters "<githubConnectionName>" github connection name
+#    And User enters "<githubHostUrl>" github host url
     And User selects "<githubAccessApiToken>" github access api token
+    And User selects "<githubAccessApiToken>" token for pull request builder
     And User clicks 'Save' button
     Examples:
       | username | password | githubConnectionName | githubHostUrl          | githubAccessApiToken |
       | username | password | github               | https://api.github.com | github-access-token  |
 
-  @Github_integration
-  Scenario Outline: Create CI provisioner for Gitlab integration
+  @Github_integration @Integration
+  Scenario Outline: Create CI provisioner for Github integration
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
     And User enters "<password>" in password field
@@ -74,7 +93,7 @@ Feature: Github_integration
     And User enters "<provisionerName>" provisioner name
     And User clicks 'freestyle project' option
     And User clicks 'create provisioner' button
-    And User enters "<branchName>" branch name in 'Label Expression' field
+#    And User enters "<branchName>" branch name in 'Label Expression' field
     And User checks 'Execute concurrent builds if necessary' checkbox
     And User checks 'This project is parameterized' checkbox
     And User clicks 'Add parameter' button
@@ -118,7 +137,7 @@ Feature: Github_integration
     And User selects "<buildStep>" build step
     And User clicks 'Use the provided DSL script' checkbox
     And User activate 'DSL script' window
-    And User enters "<gitHubProvisionerCode>" GitHub provisioner code
+    And User enters GitHub provisioner code
     Then User clicks 'Save provisioner' button
     Examples:
       | username | password | provisionerName | branchName | parametersType   | parameterName | parameterName1 | parameterName2 | parameterName3 | parameterName4     | parameterName5        | parameterName6 | parameterName7 | parameterName8 | parameterName9     | parameterName10 | parameterName11          | buildStep        |

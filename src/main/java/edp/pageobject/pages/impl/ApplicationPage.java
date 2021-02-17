@@ -6,15 +6,12 @@ import com.codeborne.selenide.SelenideElement;
 import edp.core.annotations.Page;
 import edp.pageobject.pages.interfaces.IApplicationPage;
 import edp.utils.wait.FlexWait;
-import io.cucumber.datatable.dependency.difflib.StringUtills;
 import io.vavr.control.Try;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 import java.util.function.Predicate;
 
-import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 @Lazy

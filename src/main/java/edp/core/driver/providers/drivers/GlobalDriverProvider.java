@@ -1,5 +1,12 @@
 package edp.core.driver.providers.drivers;
 
+import edp.core.annotations.DriverProvider;
+import edp.core.config.TestConfiguration;
+import edp.core.driver.interfaces.ICapabilitiesFactory;
+import edp.core.driver.interfaces.IWebDriverProvider;
+import edp.core.exceptions.TAFRuntimeException;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.vavr.control.Try;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,17 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.net.URL;
 import java.util.Objects;
 
-import edp.core.annotations.DriverProvider;
-import edp.core.config.TestConfiguration;
-import edp.core.driver.interfaces.ICapabilitiesFactory;
-import edp.core.driver.interfaces.IWebDriverProvider;
-import edp.core.exceptions.TAFRuntimeException;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.vavr.control.Try;
-
-import static io.vavr.API.$;
-import static io.vavr.API.Case;
-import static io.vavr.API.Match;
+import static io.vavr.API.*;
 
 @DriverProvider
 public class GlobalDriverProvider implements IWebDriverProvider {

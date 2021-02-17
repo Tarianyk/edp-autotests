@@ -22,6 +22,7 @@ environment-config:
   goOperatorSdkUrlGitlab: 'https://git.epam.com/epmd-edp/temp/repos-for-autotests/go-operator-sdk.git'
   java8MultimoduleGitlab: 'https://git.epam.com/epmd-edp/temp/repos-for-autotests/java8-maven-multimodule.git'
   java11MultimoduleGitlab: 'https://git.epam.com/epmd-edp/temp/repos-for-autotests/java11-maven-multimodule.git'
+  terraformRepoUrlGitlab: 'https://git.epam.com/epmd-edp/temp/repos-for-autotests/terraform.git'
   ######### GitHub repositories ##########
   java8MavenRepoUrlGithub: 'https://github.com/dfkononov/java-maven-java8.git'
   java8GradleRepoUrlGithub: 'https://github.com/dfkononov/java-gradle-java8.git'
@@ -35,6 +36,7 @@ environment-config:
   python38RepoUrlGithub: 'https://github.com/dfkononov/python-python-python-3.8.git'
   dotnet31RepoUrlGithub: 'https://github.com/dfkononov/dotnet-dotnet-dotnet-3.1.git'
   dotnet21RepoUrlGithub: 'https://github.com/dfkononov/dotnet-dotnet-dotnet-2.1.git'
+  terraformRepoUrlGithub: 'https://github.com/dfkononov/terraform-terraform.git'
   ##########
   petclinicBeRepoUrlGitlab: 'https://git.epam.com/epmd-edp/examples/3tier/3-tier-app-be.git'
   petclinicFeRepoUrlGitlab: 'https://git.epam.com/epmd-edp/examples/3tier/3-tier-app-fe.git'
@@ -89,7 +91,6 @@ environment-config:
                  DASXBvnS7aOWHpAAAAG0RteXRyb19Lb25vbm92QEVQVUFLSEFXMDEwMgECAwQFBgc=
                  -----END OPENSSH PRIVATE KEY-----
 '
-  gitlabProvisionerCode: 'test'
   gitlabSshKeyYaml: 'kind: Secret
                      apiVersion: v1
                      metadata:

@@ -1,6 +1,7 @@
 package edp.stepdefs;
 
 import edp.core.config.TestConfiguration;
+import edp.groovy.service.interfaces.provisioner.IProvisionerGroovyService;
 import edp.pageobject.pages.IBrowserTabProcessing;
 import edp.pageobject.pages.interfaces.IJenkins;
 import io.cucumber.java.en.And;
@@ -12,6 +13,8 @@ public class JenkinsDefinitionSteps {
     private IJenkins jenkins;
     @Autowired
     private TestConfiguration testConfig;
+    @Autowired
+    private IProvisionerGroovyService provisionerGroovyService;
 
     @And("User clicks {string} codebase jenkins folder")
     public void userClicksCodebaseJenkinsFolder(final String codebaseJenkinsFolder) {
@@ -32,6 +35,11 @@ public class JenkinsDefinitionSteps {
     public void userSeesSuccessStatusForBuildJob(final String buildJob) {
         jenkins.buildJobStatusShouldBeSuccess(buildJob);
         IBrowserTabProcessing.switchToFirstTab();
+    }
+
+    @And("User sees success status for {string} plugin installation")
+    public void userSeesSuccessStatusForPluginInstallation(final String pluginName) {
+        jenkins.pluginInstallationStatusShouldBeActive(pluginName);
     }
 
     @And("User sees success status for {string} cd pipeline stage")
@@ -65,10 +73,10 @@ public class JenkinsDefinitionSteps {
         jenkins.selectCredentialsKind(credentialsKind);
     }
 
-    @And("User enters {string} api token")
-    public void userEntersApiToken(final String gitlabApiToken) {
+    @And("User enters gitlab api token")
+    public void userEntersApiToken() {
         String token = testConfig.getEnvironmentConfig().getGitlabApiToken();
-        jenkins.enterApiToken(gitlabApiToken);
+        jenkins.enterApiToken(token);
     }
 
     @And("User enters {string} token id")
@@ -102,10 +110,10 @@ public class JenkinsDefinitionSteps {
         jenkins.enterPrivatSshKey(privatSshKey);
     }
 
-    @And("User enters {string} secret token")
-    public void userEntersSecretToken(final String githubSecretToken) {
+    @And("User enters secret token")
+    public void userEntersSecretToken() {
         String secret = testConfig.getEnvironmentConfig().getGithubSecretToken();
-        jenkins.enterSecretToken(githubSecretToken);
+        jenkins.enterSecretToken(secret);
     }
 
     @And("User enters {string} secret id")
@@ -116,6 +124,31 @@ public class JenkinsDefinitionSteps {
     @And("User clicks 'Configure System' button")
     public void userClicksConfigureSystemButton() {
         jenkins.clickConfigureSystemButton();
+    }
+
+    @And("User clicks 'Manage Plugins' button")
+    public void userClicksManagePluginsButton() {
+        jenkins.clickManagePluginsButton();
+    }
+
+    @And("User clicks 'Available' button")
+    public void userClicksAvailableButton() {
+        jenkins.clickAvailableButton();
+    }
+
+    @And("User enters {string} plugin name in search field")
+    public void userEntersPluginNameInSearchField(final String pluginName) {
+        jenkins.enterPluginNameInSearchField(pluginName);
+    }
+
+    @And("User Checks 'GitHub Pull Request Builder' checkbox")
+    public void userChecksGitHubPullRequestBuilderCheckbox() {
+        jenkins.checkGitHubPullRequestBuilderCheckbox();
+    }
+
+    @And("User clicks 'Install without restart' button")
+    public void userClicksInstallWithoutRestartButton() {
+        jenkins.clickInstallWithoutRestartButton();
     }
 
     @And("User enters {string} gitlab connection name")
@@ -130,7 +163,7 @@ public class JenkinsDefinitionSteps {
 
     @And("User enters {string} github host url")
     public void userEntersGithubHostUrl(final String githubHostUrl) {
-
+        jenkins.enterGithubHostUrl(githubHostUrl);
     }
 
     @And("User selects {string} gitlab access api token")
@@ -153,7 +186,7 @@ public class JenkinsDefinitionSteps {
         jenkins.clickGithubServerButton();
     }
 
-    @And("User enters {string} github connection name")
+    @Then("User enters {string} github connection name")
     public void userEntersGithubConnectionName(final String githubConnectionName) {
         jenkins.enterGithubConnectionName(githubConnectionName);
     }
@@ -161,6 +194,11 @@ public class JenkinsDefinitionSteps {
     @And("User selects {string} github access api token")
     public void userSelectsGithubAccessApiToken(final String githubAccessApiToken) {
         jenkins.selectGithubAccessApiToken(githubAccessApiToken);
+    }
+
+    @And("User selects {string} token for pull request builder")
+    public void userSelectsTokenForPullRequestBuilder(final String githubAccessApiToken) {
+        jenkins.selectsTokenForPullRequestBuilder(githubAccessApiToken);
     }
 
     @And("User opens 'job provisions' folder")
@@ -253,16 +291,16 @@ public class JenkinsDefinitionSteps {
         jenkins.activateDslScriptWindow();
     }
 
-    @And("User enters {string} provisioner code")
-    public void userEntersProvisionerCode(final String provisionerCode) {
-        String gitlabProvisioner = testConfig.getEnvironmentConfig().getGitlabProvisionerCode();
+    @And("User enters provisioner code")
+    public void userEntersProvisionerCode() {
+        String gitlabProvisioner = provisionerGroovyService.getProvisionerScript();
         jenkins.enterProvisionerCode(gitlabProvisioner);
     }
 
-    @And("User enters {string} GitHub provisioner code")
-    public void userEntersGitHubProvisionerCode(final String gitHubProvisionerCode) {
-//        String githubProvisioner = testConfig.getEnvironmentConfig().getGithubProvisionerCode();
-        jenkins.enterGitHubProvisionerCode(gitHubProvisionerCode);
+    @And("User enters GitHub provisioner code")
+    public void userEntersGitHubProvisionerCode() {
+        String githubProvisioner = provisionerGroovyService.getGithubProvisionerScript();
+        jenkins.enterGitHubProvisionerCode(githubProvisioner);
     }
 
     @And("User clicks 'sit' job")

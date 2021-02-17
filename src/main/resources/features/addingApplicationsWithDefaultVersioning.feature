@@ -42,7 +42,7 @@ Feature: Applications provisioning with default versioning type
       | go-operator-sdk-create-def-vers | Create           | Go           | operator-sdk    | Go        | master     | master            | default        | username | password |
 
 
-   @AddAppDefVers @AddAppDefVersCreate @AddCodebase
+  @AddAppDefVers @AddAppDefVersCreate @AddCodebase
   Scenario Outline: Create multi-module application using Create strategy
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -66,10 +66,6 @@ Feature: Applications provisioning with default versioning type
     Then User sees success status for "<applicationName>" application name
     And User clicks "<applicationName>" application name
     And User sees success status in Branches section for "<branchName>" branch
-    And User clicks on Application tab
-    And User clicks 'delete codebase' button
-    And User enters "<applicationName>" in confirmation name field
-    And User clicks 'Delete confirmation' button
     And User sends request to get ac-creator secret
     And User sends request to get admin-console-client secret
     And User sends request to get token

@@ -5,7 +5,6 @@ import edp.core.config.SecretsConfig;
 import edp.core.enums.testcachemanagement.TestCacheKey;
 import edp.engine.httpclient.HttpResponseWrapper;
 import edp.engine.webservice.parser.IParser;
-import edp.engine.webservice.restclient.impl.KubernetesRestClient;
 import edp.engine.webservice.restclient.interfaces.ICodebaseRestClient;
 import edp.engine.webservice.restclient.interfaces.IKeycloakRestClient;
 import edp.engine.webservice.restclient.interfaces.IKubernetesRestClient;

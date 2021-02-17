@@ -1,7 +1,6 @@
 package edp.core.config;
 
 import edp.core.config.factory.CommonPropertySourceFactory;
-import edp.core.config.factory.YamlPropertySourceFactory;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;

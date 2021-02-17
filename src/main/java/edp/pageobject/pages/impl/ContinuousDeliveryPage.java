@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import edp.core.annotations.Page;
-import edp.core.utils.WaitingUtils;
 import edp.pageobject.pages.interfaces.IContinuousDeliveryPage;
 import edp.utils.wait.FlexWait;
 import io.vavr.control.Try;

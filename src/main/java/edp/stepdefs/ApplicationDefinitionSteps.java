@@ -50,6 +50,7 @@ public class ApplicationDefinitionSteps {
                 Case($("go-operatorsdk-gitlab"), testConfig.getEnvironmentConfig().getGoOperatorSdkUrlGitlab()),
                 Case($("java8-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava8MultimoduleGitlab()),
                 Case($("java11-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava11MultimoduleGitlab()),
+                Case($("terraform-gitlab"), testConfig.getEnvironmentConfig().getTerraformRepoUrlGitlab()),
                 Case($("java8-mavem-github"), testConfig.getEnvironmentConfig().getJava8MavenRepoUrlGithub()),
                 Case($("java8-gradle-github"), testConfig.getEnvironmentConfig().getJava8GradleRepoUrlGithub()),
                 Case($("java11-mavem-github"), testConfig.getEnvironmentConfig().getJava11MavenRepoUrlGithub()),
@@ -62,6 +63,7 @@ public class ApplicationDefinitionSteps {
                 Case($("python38-github"), testConfig.getEnvironmentConfig().getPython38RepoUrlGithub()),
                 Case($("dotnet31-github"), testConfig.getEnvironmentConfig().getDotnet31RepoUrlGithub()),
                 Case($("dotnet21-github"), testConfig.getEnvironmentConfig().getDotnet21RepoUrlGithub()),
+                Case($("terraform-github"), testConfig.getEnvironmentConfig().getTerraformRepoUrlGithub()),
                 Case($("petclinicBe-gitlab"), testConfig.getEnvironmentConfig().getPetclinicBeRepoUrlGitlab()),
                 Case($("petclinicFe-gitlab"), testConfig.getEnvironmentConfig().getPetclinicFeRepoUrlGitlab()),
                 Case($("petclinic-autotests-gitlab"), testConfig.getEnvironmentConfig().getPetclinicAutotestsUrlGitlab()),
@@ -328,7 +330,8 @@ public class ApplicationDefinitionSteps {
                 Case($("go-operatorsdk-gitlab"), testConfig.getEnvironmentConfig().getGoOperatorSdkUrlGitlab()),
                 Case($("java8-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava8MultimoduleGitlab()),
                 Case($("java11-multimodule-gitlab"), testConfig.getEnvironmentConfig().getJava11MultimoduleGitlab()),
-                Case($("petclinic-autotests-gitlab"), testConfig.getEnvironmentConfig().getPetclinicAutotestsUrlGitlab())
+                Case($("petclinic-autotests-gitlab"), testConfig.getEnvironmentConfig().getPetclinicAutotestsUrlGitlab()),
+                Case($("terraform-gitlab"), testConfig.getEnvironmentConfig().getTerraformRepoUrlGitlab())
 
         );
         Pattern pattern = Pattern.compile("(?<=epam.com)(.*)(?=.git)");
@@ -352,7 +355,8 @@ public class ApplicationDefinitionSteps {
                 Case($("go-beego-github"), testConfig.getEnvironmentConfig().getGoBeegoRepoUrlGithub()),
                 Case($("go-operatorsdk-github"), testConfig.getEnvironmentConfig().getGoOperatorSdkUrlGithub()),
                 Case($("java8-multimodule-github"), testConfig.getEnvironmentConfig().getJava8MultimoduleGithub()),
-                Case($("java11-multimodule-github"), testConfig.getEnvironmentConfig().getJava11MultimoduleGithub())
+                Case($("java11-multimodule-github"), testConfig.getEnvironmentConfig().getJava11MultimoduleGithub()),
+                Case($("terraform-github"), testConfig.getEnvironmentConfig().getTerraformRepoUrlGithub())
 
         );
         Pattern pattern1 = Pattern.compile("(?<=github.com)(.*)(?=.git)");

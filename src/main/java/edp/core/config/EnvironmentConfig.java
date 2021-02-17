@@ -1,12 +1,11 @@
 package edp.core.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
-
 import edp.core.config.factory.YamlPropertySourceFactory;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 
 @Getter
 @Setter
@@ -33,6 +32,7 @@ public class EnvironmentConfig {
     private String goOperatorSdkUrlGitlab;
     private String java8MultimoduleGitlab;
     private String java11MultimoduleGitlab;
+    private String terraformRepoUrlGitlab;
     private String GitlabRepositoryLogin;
     private String GitlabRepositoryPassword;
     private String githubRepositoryLogin;
@@ -49,6 +49,7 @@ public class EnvironmentConfig {
     private String python38RepoUrlGithub;
     private String dotnet31RepoUrlGithub;
     private String dotnet21RepoUrlGithub;
+    private String terraformRepoUrlGithub;
     private String username;
     private String password;
     private String firstName;
@@ -56,7 +57,6 @@ public class EnvironmentConfig {
     private String gitlabApiToken;
     private String privatSshKey;
     private String githubSecretToken;
-    private String gitlabProvisionerCode;
     private String gitlabSshKeyYaml;
     private String gitlabGitServer;
     private String petclinicBeRepoUrlGitlab;

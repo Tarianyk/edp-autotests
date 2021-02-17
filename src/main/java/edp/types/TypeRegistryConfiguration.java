@@ -1,7 +1,10 @@
 package edp.types;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import io.cucumber.core.api.TypeRegistry;
+import io.cucumber.core.api.TypeRegistryConfigurer;
+import io.cucumber.cucumberexpressions.ParameterByTypeTransformer;
+import io.cucumber.cucumberexpressions.ParameterType;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import java.lang.reflect.Type;
@@ -9,11 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
-
-import io.cucumber.core.api.TypeRegistry;
-import io.cucumber.core.api.TypeRegistryConfigurer;
-import io.cucumber.cucumberexpressions.ParameterByTypeTransformer;
-import io.cucumber.cucumberexpressions.ParameterType;
 
 import static java.util.Locale.ENGLISH;
 
