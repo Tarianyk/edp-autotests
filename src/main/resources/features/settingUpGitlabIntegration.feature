@@ -61,7 +61,7 @@ Feature: Gitlab_integration
       | username | password | gitlabConnectionName | gitlabHostUrl        | gitlabAccessApiToken |
       | username | password | git.epam.com         | https://git.epam.com | gitlab-access-token  |
 
-  @Gitlab_integration @Integration @Gitlab_integration
+  @Gitlab_integration @Integration
   Scenario Outline: Create CI provisioner for Gitlab integration
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
