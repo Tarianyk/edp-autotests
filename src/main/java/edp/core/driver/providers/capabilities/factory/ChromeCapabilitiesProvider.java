@@ -2,22 +2,17 @@ package edp.core.driver.providers.capabilities.factory;
 
 import edp.core.annotations.CapabilitiesProvider;
 import edp.core.annotations.DriverCapabilities;
-import edp.core.config.TestConfiguration;
 import edp.core.driver.interfaces.ICapabilitiesProvider;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 
 @CapabilitiesProvider
 @DriverCapabilities(identifier = "capabilities")
 public class ChromeCapabilitiesProvider implements ICapabilitiesProvider {
-
-    @Autowired
-    protected TestConfiguration config;
 
     @Override
     public Capabilities provideCapabilities() {

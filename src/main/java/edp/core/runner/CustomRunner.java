@@ -21,7 +21,7 @@ public class CustomRunner {
     public static byte run(String[] argv, ClassLoader classLoader) {
         ResourceLoader resourceLoader = new CustomMultiLoader();
 
-        ClassFinder classFinder = new CustomClassFinder(resourceLoader, classLoader);
+         ClassFinder classFinder = new CustomClassFinder(resourceLoader, classLoader);
 
         RuntimeOptions runtimeOptions = new CommandlineOptionsParser(resourceLoader)
             .parse(argv)

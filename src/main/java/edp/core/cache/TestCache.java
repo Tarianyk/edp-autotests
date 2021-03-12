@@ -1,6 +1,5 @@
 package edp.core.cache;
 
-import edp.core.config.TestConfiguration;
 import edp.core.enums.testcachemanagement.TestCacheKey;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -25,11 +24,8 @@ public class TestCache {
 
     private static final ThreadLocal<TestSessionMap> CACHE = new InheritableThreadLocal<>();
 
-    private static TestConfiguration testConfiguration;
-
-    public static void initializeTestCache(final TestConfiguration configuration) {
+    public static void initializeTestCache() {
         CACHE.set(new TestSessionMap());
-        testConfiguration = configuration;
     }
 
     public static void clearCache() {
@@ -54,7 +50,7 @@ public class TestCache {
         Object value = getCache().get(key);
         if (Objects.nonNull(value)) {
             Assertions.assertThat(value).as("Incompatible type of returned from TestCache object")
-                .isInstanceOf(type);
+                    .isInstanceOf(type);
         }
         return Objects.nonNull(value) ? (T) value : null;
     }

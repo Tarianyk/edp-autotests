@@ -1,7 +1,7 @@
 package edp.engine.webservice.restclient.impl;
 
 import edp.core.annotations.RestClient;
-import edp.core.config.TestConfiguration;
+import edp.core.config.EnvironmentConfig;
 import edp.core.exceptions.EnvironmentException;
 import edp.engine.httpclient.HttpRequest;
 import edp.engine.httpclient.HttpResponseWrapper;
@@ -20,13 +20,15 @@ import static edp.engine.httpclient.HttpRequest.ContentType.FORM_DATA;
 @Log4j
 @RestClient
 public class KeycloakRestClient implements IKeycloakRestClient {
+
     @Autowired
-    private TestConfiguration configuration;
-    private static final String TOKEN_URL = "%s/protocol/openid-connect/token";
+    private EnvironmentConfig environmentConfig;
+
+    private static final String TOKEN_URL = "%s/realms/%s-main/protocol/openid-connect/token";
 
     @Override
     public HttpResponseWrapper sendGetTokenRequest(Map<String, String> params) {
-        String url = String.format(TOKEN_URL, configuration.getEnvironmentConfig().getKeycloakUrl());
+        String url = String.format(TOKEN_URL, environmentConfig.getKeycloakUrl(), environmentConfig.getNamespace());
         return Try.of(() ->
                 HttpRequest.post(url).addAccept(APPLICATION_JSON.toString())
                         .addContentType(FORM_DATA.toString())

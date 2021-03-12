@@ -1,6 +1,6 @@
 package edp.pageobject.pages.interfaces;
 
-public interface IOpenShift {
+public interface IKubernetes {
 
     void clickResourcesButton();
 

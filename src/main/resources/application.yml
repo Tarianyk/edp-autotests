@@ -1,14 +1,4 @@
-spring:
-  profiles:
-    active:
-      - qa
----
-spring:
-  profiles: qa
-environment-config:
-  adminConsoleUrl: 'https://edp-admin-console-edp-delivery-edp-delivery-qa.eks-core.aws.main.edp.projects.epam.com'
-  keycloakUrl: 'https://keycloak.eks-core.aws.main.edp.projects.epam.com/auth/realms/edp-delivery-edp-delivery-qa-main'
-  kubernetesUrl: 'http://127.0.0.1:8001'
+repository-paths:
   ########## GitLab repositories ##########
   java8RepoUrlGitlab: 'https://git.epam.com/epmd-edp/temp/repos-for-autotests/java8-maven.git'
   java8GradleRepoUrlGitlab: 'https://git.epam.com/epmd-edp/temp/repos-for-autotests/java8-gradle.git'
@@ -37,83 +27,8 @@ environment-config:
   dotnet31RepoUrlGithub: 'https://github.com/dfkononov/dotnet-dotnet-dotnet-3.1.git'
   dotnet21RepoUrlGithub: 'https://github.com/dfkononov/dotnet-dotnet-dotnet-2.1.git'
   terraformRepoUrlGithub: 'https://github.com/dfkononov/terraform-terraform.git'
-  ##########
+  #########
   petclinicBeRepoUrlGitlab: 'https://git.epam.com/epmd-edp/examples/3tier/3-tier-app-be.git'
   petclinicFeRepoUrlGitlab: 'https://git.epam.com/epmd-edp/examples/3tier/3-tier-app-fe.git'
   petclinicAutotestsUrlGitlab: 'https://git.epam.com/epmd-edp/examples/3tier/3-tier-app-tests.git'
   petclinicDeployUrl: 'https://github.com/SergK/spring-petclinic.git'
-  gitlabRepositoryLogin: 'dmytro_kononov@epam.com'
-  gitlabRepositoryPassword: 'Steech777'
-  githubRepositoryLogin: 'dfkononov@gmail.com'
-  githubRepositoryPassword: 'Steech888'
-  username: 'auto_test@ex.com'
-  password: 'hN2kZYKdE6BLE9Z9'
-  firstName: 'auto'
-  lastName: 'test'
-  gitlabApiToken: 'VdaZQCdcsELxyXZn6P1B'
-  githubSecretToken: 'e98e1789ba4cda023cbeebf2a6ee564dc6045017'
-  privatSshKey: '-----BEGIN OPENSSH PRIVATE KEY-----
-                 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
-                 NhAAAAAwEAAQAAAYEAt4ar9ieTAQrm6wNGnC+wq6RlOjBFeqgjvHAXKc9KWYShjUywdbVR
-                 k13pUqTulLDWfzLaQyu1Wmy3IGOI7J4nqKDzOYbRbbKqu94U7tlX90e3HJZEal/iyBhRSk
-                 wgSFzNwqeV1fTQiMwEcWHolYgoCpQKLwPwG3pTaEhcWrasrjCuZMDWGgBQBlkzGVy8y7gq
-                 tmPGRm3ZWDN/mWaF/ocC6DzPdxEv+RAZ+0gAnMSTlPQQpCzgvxk2SG8IIFpfrYSq/gCYvl
-                 FNIXuHFk3FlAHbQiqAPTHfbNBeptvxhnWGIIWbJhEQOFuQS1bCkkuYTNHdjBswDy/g0svZ
-                 OUdzErf+EzVLkc9jlmNy+4BVHlk1usyHNVdc8Qji3e53QB9LlXGRFI8Ne7wFgi4RHDs8Os
-                 15Wq3YADc/SeIIhcDXdZxGKRofrkLRop/OtCI9JxT10l0RwzcZHLlNTXsCCRq0cY70i1ti
-                 8AJ+bbALoYXDPQj4DsI22vR9Ju3FMWabOOuxPrqjAAAFmJShlQyUoZUMAAAAB3NzaC1yc2
-                 EAAAGBALeGq/YnkwEK5usDRpwvsKukZTowRXqoI7xwFynPSlmEoY1MsHW1UZNd6VKk7pSw
-                 1n8y2kMrtVpstyBjiOyeJ6ig8zmG0W2yqrveFO7ZV/dHtxyWRGpf4sgYUUpMIEhczcKnld
-                 X00IjMBHFh6JWIKAqUCi8D8Bt6U2hIXFq2rK4wrmTA1hoAUAZZMxlcvMu4KrZjxkZt2Vgz
-                 f5lmhf6HAug8z3cRL/kQGftIAJzEk5T0EKQs4L8ZNkhvCCBaX62Eqv4AmL5RTSF7hxZNxZ
-                 QB20IqgD0x32zQXqbb8YZ1hiCFmyYREDhbkEtWwpJLmEzR3YwbMA8v4NLL2TlHcxK3/hM1
-                 S5HPY5ZjcvuAVR5ZNbrMhzVXXPEI4t3ud0AfS5VxkRSPDXu8BYIuERw7PDrNeVqt2AA3P0
-                 niCIXA13WcRikaH65C0aKfzrQiPScU9dJdEcM3GRy5TU17AgkatHGO9ItbYvACfm2wC6GF
-                 wz0I+A7CNtr0fSbtxTFmmzjrsT66owAAAAMBAAEAAAGBALGLZkafaFak3lpS8/dbJ5YVVx
-                 yg4EZV7SR6Z945vFq3tbZFj5yACef//R3Hk0tjfE7XulErMqnE7LA3upn2MrWu5z4qz+ZI
-                 52UR5rxepPwDdAEC2jLyiik7ZUD0PnLi3OfISmsPCMKeZFnv9xrZ+qqpJuTu8VUT1SbYgg
-                 f8Gzf0vnGYIEhNLx3FI2sQzVBj3WZPRdySnqX2RCX6Cfz/Te+wDKDKjtdrHUd8E6OVhJSg
-                 PI0nIVGeKWaPi5QI+fCam1AU8ltOFZvKJvN44DOyjTvAAYvPRSQJltkNZq9mvHxd3xai1H
-                 c5OLt8/Vqe5vnTf4w/PMouqW2xX9Q5mFFt59g48ND+Ezkl8b6d/LGNHgrmEsOKlSVPGTo4
-                 zi+FTlx+m422mPTyLoTIz9SPXAfSd2m87IgmFhkGm85tzY1UG9pPGAFWfnJfp71NWL0ET+
-                 2RsrU0iGbYBkNiEsVneSvV3LwUMSrWz0nubvazEwd7Q/IuvnRW9qbtT+Pe3GUVtlg+kQAA
-                 AMAof/DWD5LsjNVFHk2V5OWz5nqkJKPaQ+jBYlOO00+HdXErWDbpQGOc2cqTc9vObLZfmD
-                 sKkk+kzFbd8m32CqhWU3os23CfIRi0bDdw5l5XySlhdz9/3ESQyI2zA5tl2f4sw8RW0liU
-                 fcDiOqDyNInUrf3RU5mRF+x4NFBDyQRlKLWiS7gvwI42gUiDCyXUiWZitdr4wewcP9G4io
-                 kmHpxFx1w2Dzq1+EQWTBFIB5oW0AWun8gClYyYt3IQGwSiNa4AAADBAO5Dt1kfwDopNcSh
-                 Chf9OcDBcMXUgydOQ2GaUD1OB6XvzKKXjffD0hRvCD+7mWy0lu2Wnz3HVtdd5oY1vojUJ4
-                 YdPqEhYykC9nlAkNFrMsKL1mKQByGvA7DbHI+SbRuyNpY62hM5Za0qzX5G9kfxNipxlJcO
-                 VFeYsRplnF5dr/URMtBDA6OPJqZpBCoOyBax8ZlFuX5AVwAbvPvcWeh0iRQniU7t8g5mbz
-                 9zUJyAYMfkfWKAsccUhk75iGKIqW80qwAAAMEAxS/hBt51ASHQDgGPQZaUxvTSxVwCCrLq
-                 cm8oPNRIoWUd/tViYLXp4FP3Kl+RZmCIJkkPhKXrRXN5QrAJdRMDuK3BauZoo0Ch9gipbD
-                 xJK7Om65LFwhcINPHztmlBlodq80ExNaEl7mnE4JfXfoFiCEOSFTMVe+6Tn2ezGPMl38+Q
-                 KWtLq0nfGuLpouBO9N2DGiuXi4Jiybf2lmLbZHCey1WRl0Ks8CPwTtwvWvDn0Rv13xp4b0
-                 DASXBvnS7aOWHpAAAAG0RteXRyb19Lb25vbm92QEVQVUFLSEFXMDEwMgECAwQFBgc=
-                 -----END OPENSSH PRIVATE KEY-----
-'
-  gitlabSshKeyYaml: 'kind: Secret
-                     apiVersion: v1
-                     metadata:
-                       name: gitlab-sshkey
-                     data:
-                       id_rsa: >-
-                         LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUJsd0FBQUFkemMyZ3RjbgpOaEFBQUFBd0VBQVFBQUFZRUF0NGFyOWllVEFRcm02d05HbkMrd3E2UmxPakJGZXFnanZIQVhLYzlLV1lTaGpVeXdkYlZSCmsxM3BVcVR1bExEV2Z6TGFReXUxV215M0lHT0k3SjRucUtEek9ZYlJiYktxdTk0VTd0bFg5MGUzSEpaRWFsL2l5QmhSU2sKd2dTRnpOd3FlVjFmVFFpTXdFY1dIb2xZZ29DcFFLTHdQd0czcFRhRWhjV3Jhc3JqQ3VaTURXR2dCUUJsa3pHVnk4eTdncQp0bVBHUm0zWldETi9tV2FGL29jQzZEelBkeEV2K1JBWiswZ0FuTVNUbFBRUXBDemd2eGsyU0c4SUlGcGZyWVNxL2dDWXZsCkZOSVh1SEZrM0ZsQUhiUWlxQVBUSGZiTkJlcHR2eGhuV0dJSVdiSmhFUU9GdVFTMWJDa2t1WVROSGRqQnN3RHkvZzBzdloKT1VkekVyZitFelZMa2M5amxtTnkrNEJWSGxrMXVzeUhOVmRjOFFqaTNlNTNRQjlMbFhHUkZJOE5lN3dGZ2k0UkhEczhPcwoxNVdxM1lBRGMvU2VJSWhjRFhkWnhHS1JvZnJrTFJvcC9PdENJOUp4VDEwbDBSd3pjWkhMbE5UWHNDQ1JxMGNZNzBpMXRpCjhBSitiYkFMb1lYRFBRajREc0kyMnZSOUp1M0ZNV2FiT091eFBycWpBQUFGbUpTaGxReVVvWlVNQUFBQUIzTnphQzF5YzIKRUFBQUdCQUxlR3EvWW5rd0VLNXVzRFJwd3ZzS3VrWlRvd1JYcW9JN3h3RnluUFNsbUVvWTFNc0hXMVVaTmQ2VktrN3BTdwoxbjh5MmtNcnRWcHN0eUJqaU95ZUo2aWc4em1HMFcyeXFydmVGTzdaVi9kSHR4eVdSR3BmNHNnWVVVcE1JRWhjemNLbmxkClgwMElqTUJIRmg2SldJS0FxVUNpOEQ4QnQ2VTJoSVhGcTJySzR3cm1UQTFob0FVQVpaTXhsY3ZNdTRLclpqeGtadDJWZ3oKZjVsbWhmNkhBdWc4ejNjUkwva1FHZnRJQUp6RWs1VDBFS1FzNEw4Wk5raHZDQ0JhWDYyRXF2NEFtTDVSVFNGN2h4Wk54WgpRQjIwSXFnRDB4MzJ6UVhxYmI4WVoxaGlDRm15WVJFRGhia0V0V3dwSkxtRXpSM1l3Yk1BOHY0TkxMMlRsSGN4SzMvaE0xClM1SFBZNVpqY3Z1QVZSNVpOYnJNaHpWWFhQRUk0dDN1ZDBBZlM1VnhrUlNQRFh1OEJZSXVFUnc3UERyTmVWcXQyQUEzUDAKbmlDSVhBMTNXY1Jpa2FINjVDMGFLZnpyUWlQU2NVOWRKZEVjTTNHUnk1VFUxN0Fna2F0SEdPOUl0Yll2QUNmbTJ3QzZHRgp3ejBJK0E3Q050cjBmU2J0eFRGbW16anJzVDY2b3dBQUFBTUJBQUVBQUFHQkFMR0xaa2FmYUZhazNscFM4L2RiSjVZVlZ4CnlnNEVaVjdTUjZaOTQ1dkZxM3RiWkZqNXlBQ2VmLy9SM0hrMHRqZkU3WHVsRXJNcW5FN0xBM3VwbjJNcld1NXo0cXorWkkKNTJVUjVyeGVwUHdEZEFFQzJqTHlpaWs3WlVEMFBuTGkzT2ZJU21zUENNS2VaRm52OXhyWitxcXBKdVR1OFZVVDFTYllnZwpmOEd6ZjB2bkdZSUVoTkx4M0ZJMnNRelZCajNXWlBSZHlTbnFYMlJDWDZDZnovVGUrd0RLREtqdGRySFVkOEU2T1ZoSlNnClBJMG5JVkdlS1dhUGk1UUkrZkNhbTFBVThsdE9GWnZLSnZONDRET3lqVHZBQVl2UFJTUUpsdGtOWnE5bXZIeGQzeGFpMUgKYzVPTHQ4L1ZxZTV2blRmNHcvUE1vdXFXMnhYOVE1bUZGdDU5ZzQ4TkQrRXprbDhiNmQvTEdOSGdybUVzT0tsU1ZQR1RvNAp6aStGVGx4K200MjJtUFR5TG9USXo5U1BYQWZTZDJtODdJZ21GaGtHbTg1dHpZMVVHOXBQR0FGV2ZuSmZwNzFOV0wwRVQrCjJSc3JVMGlHYllCa05pRXNWbmVTdlYzTHdVTVNyV3owbnVidmF6RXdkN1EvSXV2blJXOXFidFQrUGUzR1VWdGxnK2tRQUEKQU1Bb2YvRFdENUxzak5WRkhrMlY1T1d6NW5xa0pLUGFRK2pCWWxPTzAwK0hkWEVyV0RicFFHT2MyY3FUYzl2T2JMWmZtRApzS2trK2t6RmJkOG0zMkNxaFdVM29zMjNDZklSaTBiRGR3NWw1WHlTbGhkejkvM0VTUXlJMnpBNXRsMmY0c3c4UlcwbGlVCmZjRGlPcUR5TkluVXJmM1JVNW1SRit4NE5GQkR5UVJsS0xXaVM3Z3Z3STQyZ1VpREN5WFVpV1ppdGRyNHdld2NQOUc0aW8Ka21IcHhGeDF3MkR6cTErRVFXVEJGSUI1b1cwQVd1bjhnQ2xZeVl0M0lRR3dTaU5hNEFBQURCQU81RHQxa2Z3RG9wTmNTaApDaGY5T2NEQmNNWFVneWRPUTJHYVVEMU9CNlh2ektLWGpmZkQwaFJ2Q0QrN21XeTBsdTJXbnozSFZ0ZGQ1b1kxdm9qVUo0CllkUHFFaFl5a0M5bmxBa05Gck1zS0wxbUtRQnlHdkE3RGJISStTYlJ1eU5wWTYyaE01WmEwcXpYNUc5a2Z4TmlweGxKY08KVkZlWXNScGxuRjVkci9VUk10QkRBNk9QSnFacEJDb095QmF4OFpsRnVYNUFWd0FidlB2Y1dlaDBpUlFuaVU3dDhnNW1iego5elVKeUFZTWZrZldLQXNjY1Voazc1aUdLSXFXODBxd0FBQU1FQXhTL2hCdDUxQVNIUURnR1BRWmFVeHZUU3hWd0NDckxxCmNtOG9QTlJJb1dVZC90VmlZTFhwNEZQM0tsK1JabUNJSmtrUGhLWHJSWE41UXJBSmRSTUR1SzNCYXVab28wQ2g5Z2lwYkQKeEpLN09tNjVMRndoY0lOUEh6dG1sQmxvZHE4MEV4TmFFbDdtbkU0SmZYZm9GaUNFT1NGVE1WZSs2VG4yZXpHUE1sMzgrUQpLV3RMcTBuZkd1THBvdUJPOU4yREdpdVhpNEppeWJmMmxtTGJaSENleTFXUmwwS3M4Q1B3VHR3dld2RG4wUnYxM3hwNGIwCkRBU1hCdm5TN2FPV0hwQUFBQUcwUnRlWFJ5YjE5TGIyNXZibTkyUUVWUVZVRkxTRUZYTURFd01nRUNBd1FGQmdjPQotLS0tLUVORCBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0K
-                       id_rsa.pub: >-
-                         c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCZ1FDM2hxdjJKNU1CQ3VickEwYWNMN0NycEdVNk1FVjZxQ084Y0JjcHowcFpoS0dOVExCMXRWR1RYZWxTcE82VXNOWi9NdHBESzdWYWJMY2dZNGpzbmllb29QTTVodEZ0c3FxNzNoVHUyVmYzUjdjY2xrUnFYK0xJR0ZGS1RDQklYTTNDcDVYVjlOQ0l6QVJ4WWVpVmlDZ0tsQW92QS9BYmVsTm9TRnhhdHF5dU1LNWt3TllhQUZBR1dUTVpYTHpMdUNxMlk4WkdiZGxZTTMrWlpvWCtod0xvUE05M0VTLzVFQm43U0FDY3hKT1U5QkNrTE9DL0dUWklid2dnV2wrdGhLcitBSmkrVVUwaGU0Y1dUY1dVQWR0Q0tvQTlNZDlzMEY2bTIvR0dkWVlnaFpzbUVSQTRXNUJMVnNLU1M1aE0wZDJNR3pBUEwrRFN5OWs1UjNNU3QvNFROVXVSejJPV1kzTDdnRlVlV1RXNnpJYzFWMXp4Q09MZDduZEFIMHVWY1pFVWp3MTd2QVdDTGhFY096dzZ6WGxhcmRnQU56OUo0Z2lGd05kMW5FWXBHaCt1UXRHaW44NjBJajBuRlBYU1hSSEROeGtjdVUxTmV3SUpHclJ4anZTTFcyTHdBbjV0c0F1aGhjTTlDUGdPd2piYTlIMG03Y1V4WnBzNDY3RSt1cU09IERteXRyb19Lb25vbm92QEVQVUFLSEFXMDEwMgo=
-                       username: ZG15dHJvX2tvbm9ub3ZAZXBhbS5jb20=
-                     type: Opaque'
-
-  gitlabGitServer: 'apiVersion: v2.edp.epam.com/v1alpha1
-                    kind: GitServer
-                    metadata:
-                      name: git-epam
-                    spec:
-                      createCodeReviewPipeline: false
-                      gitHost: git.epam.com
-                      gitUser: git
-                      httpsPort: 443
-                      nameSshKeySecret: gitlab-sshkey
-                      sshPort: 22'
-
-
-

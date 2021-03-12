@@ -1,0 +1,3 @@
+{
+  "dev": "./gradlew bootRun -Dthreads.number=2 -Dnamespace=edp-delivery-at-delivery-dev -Dcucumber.options=\"--tags '@AddAppDefVersCreate and not @MultiModuleCreate'\" -Dbrowser.name=chrome -Dversion=85.0 -Dmoon.url=http://moon.eks-core.aws.main.edp.projects.epam.com/wd/hub"
+}

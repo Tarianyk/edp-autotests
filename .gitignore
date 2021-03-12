@@ -2,7 +2,10 @@
 /.gradle/
 /build/
 /target/
-!/EDP-UI-test.ipr
-!/EDP-UI-test.iws
-!/*.iml
+/allure-reports/
+*.ipr
+*.iws
+*.iml
+*.ipr
+*.iws
 /debug.log

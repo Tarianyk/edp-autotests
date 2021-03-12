@@ -2,7 +2,7 @@ package edp.core.driver.providers.capabilities.factory;
 
 import edp.core.annotations.DriverCapabilities;
 import edp.core.annotations.Factory;
-import edp.core.config.TestConfiguration;
+import edp.core.config.MoonConfig;
 import edp.core.driver.interfaces.ICapabilitiesFactory;
 import edp.core.driver.interfaces.ICapabilitiesProvider;
 import edp.core.exceptions.TAFRuntimeException;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class CapabilitiesFactory implements ICapabilitiesFactory {
 
     @Autowired
-    private TestConfiguration configuration;
+    private MoonConfig moonConfig;
 
     @Autowired
     @DriverCapabilities(identifier = "capabilities")
@@ -23,8 +23,8 @@ public class CapabilitiesFactory implements ICapabilitiesFactory {
 
     @Override
     public Capabilities getCapabilities() {
-        return capabilities.entrySet().stream().filter(entry -> entry.getKey().toLowerCase().contains(configuration.getBrowserName())).
+        return capabilities.entrySet().stream().filter(entry -> entry.getKey().toLowerCase().contains(moonConfig.getBrowserName())).
                 map(entry -> entry.getValue().provideCapabilities()).findFirst().orElseThrow(() -> new TAFRuntimeException(
-                        String.format("Capabilities are empty for browser %s", configuration .getBrowserName())));
-            }
+                String.format("Capabilities are empty for browser %s", moonConfig.getBrowserName())));
+    }
 }

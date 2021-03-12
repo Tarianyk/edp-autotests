@@ -31,18 +31,17 @@ Feature: Applications provisioning with default versioning type
     Examples:
       | applicationName                 | codebaseStrategy | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password |
       | java8-maven-create-def-vers     | Create           | Java         | java8           | Maven     | master     | master            | default        | username | password |
-      | java11-maven-create-def-vers    | Create           | Java         | java11          | Maven     | master     | master            | default        | username | password |
-      | java8-gradle-create-def-vers    | Create           | Java         | java8           | Gradle    | master     | master            | default        | username | password |
-      | java11-gradle-create-def-vers   | Create           | Java         | java11          | Gradle    | master     | master            | default        | username | password |
-      | dotnet-2-1-create-def-vers      | Create           | DotNet       | dotnet-2.1      | dotnet    | master     | master            | default        | username | password |
-      | dotnet-3-1-create-def-vers      | Create           | DotNet       | dotnet-3.1      | dotnet    | master     | master            | default        | username | password |
-      | python-3-8-create-def-vers      | Create           | Python       | python-3.8      | Python    | master     | master            | default        | username | password |
-      | javascript-create-def-vers      | Create           | JavaScript   | react           | NPM       | master     | master            | default        | username | password |
-      | go-beego-create-def-vers        | Create           | Go           | beego           | Go        | master     | master            | default        | username | password |
-      | go-operator-sdk-create-def-vers | Create           | Go           | operator-sdk    | Go        | master     | master            | default        | username | password |
+      #| java11-maven-create-def-vers    | Create           | Java         | java11          | Maven     | master     | master            | default        | username | password |
+      #| java8-gradle-create-def-vers    | Create           | Java         | java8           | Gradle    | master     | master            | default        | username | password |
+      #| java11-gradle-create-def-vers   | Create           | Java         | java11          | Gradle    | master     | master            | default        | username | password |
+      #| dotnet-2-1-create-def-vers      | Create           | DotNet       | dotnet-2.1      | dotnet    | master     | master            | default        | username | password |
+      #| dotnet-3-1-create-def-vers      | Create           | DotNet       | dotnet-3.1      | dotnet    | master     | master            | default        | username | password |
+      #| python-3-8-create-def-vers      | Create           | Python       | python-3.8      | Python    | master     | master            | default        | username | password |
+      #| javascript-create-def-vers      | Create           | JavaScript   | react           | NPM       | master     | master            | default        | username | password |
+      #| go-beego-create-def-vers        | Create           | Go           | beego           | Go        | master     | master            | default        | username | password |
+      #| go-operator-sdk-create-def-vers | Create           | Go           | operator-sdk    | Go        | master     | master            | default        | username | password |
 
-
-  @AddAppDefVers @AddAppDefVersCreate @AddCodebase
+   @AddAppDefVers @AddAppDefVersCreate @MultiModuleCreate @AddCodebase
   Scenario Outline: Create multi-module application using Create strategy
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -111,18 +110,18 @@ Feature: Applications provisioning with default versioning type
     Examples:
       | applicationName                       | codebaseStrategy | repository            | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password |
       | java8-maven-clone-gitlab-def-vers     | Clone            | java8-gitlab          | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Maven     | master     | master            | default        | username | password |
-      | java8-gradle-clone-gitlab-def-vers    | Clone            | java8-gradle-gitlab   | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Gradle    | master     | master            | default        | username | password |
-      | java11-gradle-clone-gitlab-def-vers   | Clone            | java11-gitlab         | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Gradle    | master     | master            | default        | username | password |
-      | java11-maven-clone-gitlab-def-vers    | Clone            | java11-maven-gitlab   | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Maven     | master     | master            | default        | username | password |
-      | dotnet-3-1-clone-gitlab-def-vers      | Clone            | dotnet31-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | DotNet       | dotnet-3.1      | dotnet    | master     | master            | default        | username | password |
-      | dotnet-2-1-clone-gitlab-def-vers      | Clone            | dotnet21-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | DotNet       | dotnet-2.1      | dotnet    | master     | master            | default        | username | password |
-      | python-3-8-clone-gitlab-def-vers      | Clone            | python38-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | default        | username | password |
-      | javascript-clone-gitlab-def-vers      | Clone            | javascript-gitlab     | gitlabRepositoryLogin | gitlabRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | default        | username | password |
-      | go-beego-clone-gitlab-def-vers        | Clone            | go-beego-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | Go           | beego           | Go        | master     | master            | default        | username | password |
-      | go-operator-sdk-clone-gitlab-def-vers | Clone            | go-operatorsdk-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Go           | operator-sdk    | Go        | master     | master            | default        | username | password |
+      #| java8-gradle-clone-gitlab-def-vers    | Clone            | java8-gradle-gitlab   | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java8           | Gradle    | master     | master            | default        | username | password |
+      #| java11-gradle-clone-gitlab-def-vers   | Clone            | java11-gitlab         | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Gradle    | master     | master            | default        | username | password |
+      #| java11-maven-clone-gitlab-def-vers    | Clone            | java11-maven-gitlab   | gitlabRepositoryLogin | gitlabRepositoryPassword | Java         | java11          | Maven     | master     | master            | default        | username | password |
+      #| dotnet-3-1-clone-gitlab-def-vers      | Clone            | dotnet31-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | DotNet       | dotnet-3.1      | dotnet    | master     | master            | default        | username | password |
+      #| dotnet-2-1-clone-gitlab-def-vers      | Clone            | dotnet21-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | DotNet       | dotnet-2.1      | dotnet    | master     | master            | default        | username | password |
+      #| python-3-8-clone-gitlab-def-vers      | Clone            | python38-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | default        | username | password |
+      #| javascript-clone-gitlab-def-vers      | Clone            | javascript-gitlab     | gitlabRepositoryLogin | gitlabRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | default        | username | password |
+      #| go-beego-clone-gitlab-def-vers        | Clone            | go-beego-gitlab       | gitlabRepositoryLogin | gitlabRepositoryPassword | Go           | beego           | Go        | master     | master            | default        | username | password |
+      #| go-operator-sdk-clone-gitlab-def-vers | Clone            | go-operatorsdk-gitlab | gitlabRepositoryLogin | gitlabRepositoryPassword | Go           | operator-sdk    | Go        | master     | master            | default        | username | password |
 
 
-  @AddAppDefVers @AddAppDefVersClone @AddCodebase
+  @AddAppDefVers @AddAppDefVersClone @MultiModuleClone @AddCodebase
   Scenario Outline: Create multi-module application using Clone strategy (Gitlab)
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
@@ -194,15 +193,15 @@ Feature: Applications provisioning with default versioning type
     Examples:
       | applicationName                       | codebaseStrategy | repository            | repositoryLogin       | repositoryPassword       | codeLanguage | languageVersion | buildTool | branchName | defaultBranchName | versioningType | username | password |
       | java8-maven-clone-github-def-vers     | Clone            | java8-mavem-github    | githubRepositoryLogin | githubRepositoryPassword | Java         | java8           | Maven     | master     | master            | default        | username | password |
-      | java8-gradle-clone-github-def-vers    | Clone            | java8-gradle-github   | githubRepositoryLogin | githubRepositoryPassword | Java         | java8           | Gradle    | master     | master            | default        | username | password |
-      | java11-maven-clone-github-def-vers    | Clone            | java11-mavem-github   | githubRepositoryLogin | githubRepositoryPassword | Java         | java11          | Maven     | master     | master            | default        | username | password |
-      | java11-gradle-clone-github-def-vers   | Clone            | java11-gradle-github  | githubRepositoryLogin | githubRepositoryPassword | Java         | java11          | Gradle    | master     | master            | default        | username | password |
-      | go-beego-clone-github-def-vers        | Clone            | go-beego-github       | githubRepositoryLogin | githubRepositoryPassword | Go           | beego           | Go        | master     | master            | default        | username | password |
-      | go-operator-sdk-clone-github-def-vers | Clone            | go-operatorsdk-github | githubRepositoryLogin | githubRepositoryPassword | Go           | operator-sdk    | Go        | master     | master            | default        | username | password |
-      | python-3-8-clone-github-def-vers      | Clone            | python38-github       | githubRepositoryLogin | githubRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | default        | username | password |
-      | javascript-clone-github-def-vers      | Clone            | javascript-github     | githubRepositoryLogin | githubRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | default        | username | password |
-      | dotnet-3-1-clone-github-def-vers      | Clone            | dotnet31-github       | githubRepositoryLogin | githubRepositoryPassword | DotNet       | dotnet-3.1      | dotnet    | master     | master            | default        | username | password |
-      | dotnet-2-1-clone-github-def-vers      | Clone            | dotnet21-github       | githubRepositoryLogin | githubRepositoryPassword | DotNet       | dotnet-2.1      | dotnet    | master     | master            | default        | username | password |
+      #| java8-gradle-clone-github-def-vers    | Clone            | java8-gradle-github   | githubRepositoryLogin | githubRepositoryPassword | Java         | java8           | Gradle    | master     | master            | default        | username | password |
+      #| java11-maven-clone-github-def-vers    | Clone            | java11-mavem-github   | githubRepositoryLogin | githubRepositoryPassword | Java         | java11          | Maven     | master     | master            | default        | username | password |
+      #| java11-gradle-clone-github-def-vers   | Clone            | java11-gradle-github  | githubRepositoryLogin | githubRepositoryPassword | Java         | java11          | Gradle    | master     | master            | default        | username | password |
+      #| go-beego-clone-github-def-vers        | Clone            | go-beego-github       | githubRepositoryLogin | githubRepositoryPassword | Go           | beego           | Go        | master     | master            | default        | username | password |
+      #| go-operator-sdk-clone-github-def-vers | Clone            | go-operatorsdk-github | githubRepositoryLogin | githubRepositoryPassword | Go           | operator-sdk    | Go        | master     | master            | default        | username | password |
+      #| python-3-8-clone-github-def-vers      | Clone            | python38-github       | githubRepositoryLogin | githubRepositoryPassword | Python       | python-3.8      | Python    | master     | master            | default        | username | password |
+      #| javascript-clone-github-def-vers      | Clone            | javascript-github     | githubRepositoryLogin | githubRepositoryPassword | JavaScript   | react           | NPM       | master     | master            | default        | username | password |
+      #| dotnet-3-1-clone-github-def-vers      | Clone            | dotnet31-github       | githubRepositoryLogin | githubRepositoryPassword | DotNet       | dotnet-3.1      | dotnet    | master     | master            | default        | username | password |
+      #| dotnet-2-1-clone-github-def-vers      | Clone            | dotnet21-github       | githubRepositoryLogin | githubRepositoryPassword | DotNet       | dotnet-2.1      | dotnet    | master     | master            | default        | username | password |
 
 
   @AddAppDefVers @AddAppDefVersClone @AddCodebase

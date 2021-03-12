@@ -5,7 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import edp.core.annotations.CurrentUrl;
 import edp.core.annotations.Page;
-import edp.core.config.TestConfiguration;
+import edp.core.config.EnvironmentConfig;
 import edp.core.driver.interfaces.IWebDriverService;
 import edp.pageobject.pages.interfaces.IBasePage;
 import edp.utils.wait.FlexWait;
@@ -26,10 +26,12 @@ import static edp.core.utils.WaitingUtils.waitForPageReadyState;
 @Page
 @Scope("prototype")
 public abstract class AbstractBasePage implements IBasePage {
+
     @Autowired
     private IWebDriverService webDriverService;
+
     @Autowired
-    private TestConfiguration configuration;
+    private EnvironmentConfig environmentConfig;
 
     private static final String CREATE_BUTTON = "//button[contains(@class,'btn-primary')]";
     private static final String PROCEED_BUTTON = "//button[contains(@class,'edp-submit-form-btn')]";
@@ -156,7 +158,7 @@ public abstract class AbstractBasePage implements IBasePage {
     @Override
     public void openPage() {
         webDriverService.initWebDriver();
-        getWebDriver().get(configuration.getEnvironmentConfig().getAdminConsoleUrl() + this.getClass().getAnnotation(CurrentUrl.class).value());
+        getWebDriver().get(environmentConfig.getAdminConsoleUrl() + this.getClass().getAnnotation(CurrentUrl.class).value());
     }
 
     @Override

@@ -21,23 +21,34 @@ public class WebDriverService implements IWebDriverService, DisposableBean, Init
     private boolean isFirstInitialize = true;
 
     @Override
-    public void initWebDriver() {log.info("WebDriver has been initialized");}
+    public void initWebDriver() {
+        log.info("WebDriver has been initialized");
+    }
 
-    private void destroyWebDriver() { WebDriverRunner.getWebDriver().quit();}
+    private void destroyWebDriver() {
+        WebDriverRunner.getWebDriver().quit();
+    }
 
-    private void maximizeBrowser() {WebDriverRunner.getWebDriver().manage().window().maximize();}
+    private void maximizeBrowser() {
+        WebDriverRunner.getWebDriver().manage().window().maximize();
+    }
 
     @Override
-    public void destroy() {destroyWebDriver();}
+    public void destroy() {
+        destroyWebDriver();
+    }
 
     @Override
     public void afterPropertiesSet() {
+        log.info("trying to set up web driver");
         if (isFirstInitialize) {
-           WebDriverRunner.setWebDriver(driverProvider.createWebDriver());
-           maximizeBrowser();
-           WebDriverRunner.getWebDriver().manage().deleteAllCookies();
-           WebDriverRunner.clearBrowserCache();
-           isFirstInitialize = false;
+            log.info("first web driver init");
+            WebDriverRunner.setWebDriver(driverProvider.createWebDriver());
+            maximizeBrowser();
+            WebDriverRunner.getWebDriver().manage().deleteAllCookies();
+            WebDriverRunner.clearBrowserCache();
+            isFirstInitialize = false;
+            log.info("web driver has been initialized");
         }
     }
 }

@@ -3,7 +3,7 @@ package edp.pageobject.pages.impl;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import edp.core.annotations.Page;
-import edp.pageobject.pages.interfaces.IOpenShift;
+import edp.pageobject.pages.interfaces.IKubernetes;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
@@ -13,7 +13,8 @@ import static com.codeborne.selenide.Selenide.actions;
 @Lazy
 @Page
 @Scope("prototype")
-public class OpenShift implements IOpenShift {
+public class Kubernetes implements IKubernetes {
+
     private static final String RESOURCES_BUTTON = "//span[text()='Resources']";
     private static final String SSO_BUTTON = "//a[contains(@href,'SSO')]";
     private static final String SECRETS_BUTTON = "//span[text()='Secrets']";

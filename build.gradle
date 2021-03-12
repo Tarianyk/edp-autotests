@@ -5,6 +5,7 @@ plugins {
     id 'idea'
     id 'eclipse'
     id 'io.franzbecker.gradle-lombok' version '3.1.0'
+    id "se.thinkcode.cucumber-runner" version "0.0.8"
 }
 
 apply from: rootProject.file('gradle/source-sets.gradle')
@@ -23,4 +24,12 @@ sourceCompatibility = 1.8
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     options.fork = true
+}
+
+cucumber {
+    threads = System.getProperty("threads.number")
+}
+
+bootRun {
+    systemProperties = System.properties
 }

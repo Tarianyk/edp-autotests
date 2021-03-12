@@ -1,6 +1,8 @@
 package edp.stepdefs;
 
-import edp.core.config.TestConfiguration;
+import edp.core.config.EnvironmentConfig;
+import edp.core.config.GithubProviderConfig;
+import edp.core.config.GitlabProviderConfig;
 import edp.groovy.service.interfaces.provisioner.IProvisionerGroovyService;
 import edp.pageobject.pages.IBrowserTabProcessing;
 import edp.pageobject.pages.interfaces.IJenkins;
@@ -9,10 +11,19 @@ import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class JenkinsDefinitionSteps {
+
     @Autowired
     private IJenkins jenkins;
+
     @Autowired
-    private TestConfiguration testConfig;
+    private EnvironmentConfig environmentConfig;
+
+    @Autowired
+    private GitlabProviderConfig gitlabProviderConfig;
+
+    @Autowired
+    private GithubProviderConfig githubProviderConfig;
+
     @Autowired
     private IProvisionerGroovyService provisionerGroovyService;
 
@@ -74,9 +85,9 @@ public class JenkinsDefinitionSteps {
     }
 
     @And("User enters gitlab api token")
-    public void userEntersApiToken() {
-        String token = testConfig.getEnvironmentConfig().getGitlabApiToken();
-        jenkins.enterApiToken(token);
+    public void userEntersApiToken(final String gitlabApiToken) {
+        String token = gitlabProviderConfig.getToken();
+        jenkins.enterApiToken(gitlabApiToken);
     }
 
     @And("User enters {string} token id")
@@ -106,14 +117,14 @@ public class JenkinsDefinitionSteps {
 
     @And("User enters {string} privat ssh key")
     public void userEntersPrivatSshKey(final String privatSshKey) {
-        String sshKey = testConfig.getEnvironmentConfig().getPrivatSshKey();
+        String sshKey = gitlabProviderConfig.getIdRsa();
         jenkins.enterPrivatSshKey(privatSshKey);
     }
 
-    @And("User enters secret token")
-    public void userEntersSecretToken() {
-        String secret = testConfig.getEnvironmentConfig().getGithubSecretToken();
-        jenkins.enterSecretToken(secret);
+    @And("User enters secret secret token")
+    public void userEntersSecretToken(final String githubSecretToken) {
+        String secret = githubProviderConfig.getToken();
+        jenkins.enterSecretToken(githubSecretToken);
     }
 
     @And("User enters {string} secret id")
@@ -292,8 +303,8 @@ public class JenkinsDefinitionSteps {
     }
 
     @And("User enters provisioner code")
-    public void userEntersProvisionerCode() {
-        String gitlabProvisioner = provisionerGroovyService.getProvisionerScript();
+    public void userEntersProvisionerCode(final String provisionerCode) {
+        String gitlabProvisioner = environmentConfig.getGitlabProvisionerCode();
         jenkins.enterProvisionerCode(gitlabProvisioner);
     }
 

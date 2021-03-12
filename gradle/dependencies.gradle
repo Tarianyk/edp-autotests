@@ -11,7 +11,6 @@ ext {
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter'
     annotationProcessor 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testAnnotationProcessor 'org.projectlombok:lombok'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
@@ -30,9 +29,9 @@ dependencies {
     compile group: 'io.cucumber', name: 'datatable-dependencies', version: "${datatableVersion}"
     compile group: 'com.codeborne', name: 'selenide', version: "${selenideVersion}"
     compile group: 'org.assertj', name: 'assertj-core', version: "${assertjCoreVersion}"
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.0'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.9'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.1'
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '+'
     compile group: 'io.vavr', name: 'vavr', version: '0.10.2'
     compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.13'
@@ -41,4 +40,5 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20190722'
     compile group: 'io.qameta.allure', name: 'allure-cucumber4-jvm', version: '+'
     compile group: 'io.qameta.allure', name: 'allure-selenide', version: '+'
+    compile 'io.fabric8:kubernetes-client:5.0.2'
 }

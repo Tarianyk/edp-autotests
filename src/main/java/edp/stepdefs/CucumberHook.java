@@ -2,11 +2,10 @@ package edp.stepdefs;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import edp.core.config.TestConfiguration;
+import edp.core.config.EnvironmentConfig;
 import io.cucumber.java.Before;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,16 +17,13 @@ import static edp.engine.httpclient.SecureClientInitializer.setDefaultSecureHttp
 @Slf4j
 @DirtiesContext
 @SpringBootTest
-@ContextConfiguration(classes = TestConfiguration.class)
+@ContextConfiguration(classes = EnvironmentConfig.class)
 public class CucumberHook extends AbstractJUnit4SpringContextTests {
-
-    @Autowired
-    private TestConfiguration testConfiguration;
 
     @Before(order = 1)
     public void preSetUp() {
-        initializeTestCache(testConfiguration);
-        Configuration.timeout=30_000;
+        initializeTestCache();
+        Configuration.timeout = 30_000;
         Configuration.fastSetValue = true;
         Configuration.screenshots = false;
         Configuration.savePageSource = false;
