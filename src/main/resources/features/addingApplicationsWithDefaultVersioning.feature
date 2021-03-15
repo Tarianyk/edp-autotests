@@ -1,6 +1,6 @@
 Feature: Applications provisioning with default versioning type
 
-  @AddAppDefVers @AddAppDefVersCreate @AddCodebase
+  @AddAppDefVers @AddAppDefVersCreate @AddCodebase @StubAnnotation
   Scenario Outline: Create application using Create strategy
     Given User opens EDP Admin Console
     When User enters "<username>" in username field
