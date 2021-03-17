@@ -1,3 +1,4 @@
 {
-  "sit": "./gradlew bootRun -Dthreads.number=2 -Dcucumber.options=\"--tags '@StubAnnotation'\" -Dbrowser.name=chrome -Dversion=85.0 -Dmoon.url=http://moon.eks-core.aws.main.edp.projects.epam.com/wd/hub"
+  "sit": "./gradlew bootRun -Dthreads.number=2 -Dcucumber.options=\"--tags '@StubAnnotation'\" -Dbrowser.name=chrome -Dversion=85.0 -Dmoon.url=http://moon.eks-core.aws.main.edp.projects.epam.com/wd/hub",
+  "dev": "./gradlew bootRun -Dthreads.number=2 -Dcucumber.options=\"--tags '@StubAnnotation'\" -Dbrowser.name=chrome -Dversion=85.0 -Dmoon.url=http://moon.eks-core.aws.main.edp.projects.epam.com/wd/hub"
 }
